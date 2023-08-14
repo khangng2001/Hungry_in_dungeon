@@ -19,13 +19,13 @@ public class PlayerController : MonoBehaviour
 
     private void Moving()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
         if (horizontal < 0)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
-        else
+        else if (horizontal > 0)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
