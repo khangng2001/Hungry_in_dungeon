@@ -26,16 +26,48 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Moving();
+
+        //FlipX(input.horizontal, input.vertical);
+
+        //SetAnimation(input.horizontal, input.vertical);
+
+        FlipXByMouse();
+
+        FlipYByMouse();
+    }
+
+    void FlipXByMouse()
+    {
+        Vector2 direction = input.inputMosue - new Vector2(transform.position.x, transform.position.y);
+
+        if (direction.x < 0)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if (direction.x > 0)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+    }
+
+    void FlipYByMouse()
+    {
+        Vector2 direction = input.inputMosue - new Vector2(transform.position.x, transform.position.y);
+
+        if (direction.y < 0)
+        {
+            ani.Play("DownRight");
+        }
+        else if (direction.y > 0)
+        {
+            ani.Play("UpRight");
+        }
     }
 
     private void Moving()
     {
         float horizontal = input.horizontal;
-        float vertical = input.verital;
-
-        FlipX(horizontal, vertical);
-
-        SetAnimation(horizontal, vertical);
+        float vertical = input.vertical;
 
         moveDir.Set(horizontal, vertical, 0f);
         moveDir.Normalize();

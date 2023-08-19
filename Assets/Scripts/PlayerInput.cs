@@ -5,11 +5,15 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public float horizontal;
-    public float verital;
+    public float vertical;
 
+    public Vector2 inputMosue;
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
-        verital = Input.GetAxisRaw("Vertical");
+        vertical = Input.GetAxisRaw("Vertical");
+
+        inputMosue = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
     }
 }
