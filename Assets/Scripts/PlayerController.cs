@@ -1,9 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    private int maxHealth = 0;
+    private int currentHealth = 0;
+    [SerializeField] private GameObject healthBar;
+    [SerializeField] private TextMeshProUGUI textHealthBar;
+
+    private int maxStamina = 0;
+    private int currentStamina = 0;
+    [SerializeField] private GameObject staminaBar;
+    [SerializeField] private TextMeshProUGUI textStaminaBar;
+
+    private float countTime = 0f;
+
     private Animator ani;
 
     private PlayerInput input;
@@ -15,6 +29,9 @@ public class PlayerController : MonoBehaviour
     {
         ani = GetComponentInChildren<Animator>();
         input = GetComponent<PlayerInput>();
+
+        SetHealth(100);
+        SetStamina(20);
     }
 
     void Start()
@@ -22,18 +39,15 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         Moving();
 
-        //FlipX(input.horizontal, input.vertical);
-
-        //SetAnimation(input.horizontal, input.vertical);
-
         FlipXByMouse();
 
         FlipYByMouse();
+
+        IncreaseStaminaByTime();
     }
 
     void FlipXByMouse()
@@ -71,83 +85,120 @@ public class PlayerController : MonoBehaviour
 
         moveDir.Set(horizontal, vertical, 0f);
         moveDir.Normalize();
+
         transform.Translate( moveDir * (moveSpeed * Time.deltaTime));
     }
 
-    void FlipX(float horizontal, float vertical)
+    public void SetHealth(int newHealth)
     {
-        if (horizontal < 0)
-        {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-        }
-        else if (horizontal > 0)
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        }
-
+        maxHealth = newHealth;
+        currentHealth = maxHealth;
+        healthBar.GetComponent<Slider>().maxValue = maxHealth;
+        LoadHealth();
     }
 
-    void SetAnimation(float horizontal, float vertical)
+    public void LoadHealth()
     {
-        if (horizontal == 0 && vertical == 0)
+        textHealthBar.text = currentHealth + "/" + maxHealth;
+        healthBar.GetComponent<Slider>().value = currentHealth;
+    }
+
+    public void IncreaseHealth(int newHealth)
+    {
+        if (currentHealth <= maxHealth)
         {
-            return;
+            currentHealth += newHealth;
+
+            if (currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
         }
-        else if (horizontal == 0 && vertical > 0)
+
+        LoadHealth();
+    }
+
+    public void DecreaseHealth(int lostHealth)
+    {
+        if (currentHealth > 0)
         {
-            ani.Play("Up");
+            currentHealth -= lostHealth;
+
+            if (currentHealth < 0)
+            {
+                currentHealth = 0;
+            }
         }
-        else if (horizontal == 0 && vertical < 0)
+
+        LoadHealth();
+    }
+
+    public int GetHealth()
+    {
+        return currentHealth;
+    }
+
+    public void SetStamina(int newStamina)
+    {
+        maxStamina = newStamina;
+        currentStamina = maxStamina;
+        staminaBar.GetComponent<Slider>().maxValue = maxStamina;
+        LoadStamina();
+    }
+
+    public void LoadStamina()
+    {
+        textStaminaBar.text = currentStamina + "/" + maxStamina;
+        staminaBar.GetComponent<Slider>().value = currentStamina;
+    }
+
+    public void IncreaseStamina(int newStamina)
+    {
+        if (currentStamina < maxStamina)
         {
-            ani.Play("Down");
+            currentStamina += newStamina;
+
+            if (currentStamina > maxStamina)
+            {
+                currentStamina = maxStamina;
+            }
         }
-        else if (horizontal < 0 && vertical == 0)
+
+        LoadStamina();
+    }
+
+    public void DecreaseStamina(int lostStamina)
+    {
+        if (currentStamina >= 0)
         {
-            ani.Play("DownRight");
+            currentStamina -= lostStamina;
+
+            if (currentStamina < 0)
+            {
+                currentStamina = 0;
+            }
         }
-        else if (horizontal > 0 && vertical == 0)
+
+        LoadStamina();
+    }
+
+    public int GetStamina()
+    {
+        return currentStamina;
+    }
+
+    private void IncreaseStaminaByTime()
+    {
+        if (currentStamina < maxStamina)
         {
-            ani.Play("DownRight");
-        }
-        else if (vertical > 0 && horizontal < 0)
-        {
-            ani.Play("UpRight");
-        }
-        else if (vertical > 0 && horizontal > 0)
-        {
-            ani.Play("UpRight");
-        }
-        else if (vertical < 0 && horizontal > 0)
-        {
-            ani.Play("DownRight");
-        }
-        else if (vertical < 0 && horizontal < 0)
-        {
-            ani.Play("DownRight");
-        }
-        else if (horizontal == 0)
-        {
-            return;
-        }
-        else if (vertical == 0)
-        {
-            return;
-        }
-        else if (vertical > 0)
-        {
-            ani.Play("Up");
-        }
-        else if (vertical < 0)
-        {
-            ani.Play("Down");
-        }
-        else if (horizontal < 0)
-        {
-            ani.Play("DownRight");
-        }
-        else if (horizontal > 0)
-        {
-            ani.Play("DownRight");
+            countTime += Time.deltaTime;
+
+            if (countTime > 1f)
+            {
+                IncreaseStamina(1);
+
+                countTime = 0;
+            }
         }
     }
 }

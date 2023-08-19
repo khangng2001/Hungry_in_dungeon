@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class SwordController : MonoBehaviour
 {
+    [SerializeField] private GameObject player;
+
+    private int staminaAttack1 = 2;
+    private int staminaAttack2 = 4;
+
     private Animator ani;
 
     private int numClick = 0;
@@ -15,25 +20,36 @@ public class SwordController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (player.GetComponent<PlayerController>().GetStamina() >= staminaAttack1)
         {
-            if (numClick == 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                Attack_1();
-                StartCoroutine(timeOfAttack_1());
+                if (numClick == 0)
+                {
+                    Attack_1();
+                    StartCoroutine(timeOfAttack_1());
+                }
+                numClick++;
             }
-            numClick++;
+        }
+        else
+        {
+            numClick = 0;
         }
     }
 
     void Attack_1()
     {
-        ani.Play("Attack_1"); 
+        ani.Play("Attack_1");
+
+        player.GetComponent<PlayerController>().DecreaseStamina(staminaAttack1);
     }
 
     void Attack_2()
     {
         ani.Play("Attack_2");
+
+        player.GetComponent<PlayerController>().DecreaseStamina(staminaAttack2);
     }
 
     IEnumerator timeOfAttack_1()
@@ -46,8 +62,15 @@ public class SwordController : MonoBehaviour
         }
         else
         {
-            Attack_2();
-            StartCoroutine(timeOfAttack_2());
+            if (player.GetComponent<PlayerController>().GetStamina() >= staminaAttack2)
+            {
+                Attack_2();
+                StartCoroutine(timeOfAttack_2());
+            }
+            else
+            {
+                numClick = 0;
+            }
         }
     }
 
