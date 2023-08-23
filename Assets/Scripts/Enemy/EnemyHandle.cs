@@ -2,8 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyHandle : MonoBehaviour
 {
+    public float strengthEnemy = 0f;
+    public float speedEnemy = 0f;
+    public float healththEnemy = 0f;
+
+    private void Start()
+    {
+        SetStrength(strengthEnemy);
+        SetSpeed(speedEnemy);
+        SetMaxHealth(healththEnemy);    
+    }
+
     // ==================== HANDLE ===================
     // ======================================================
 
@@ -26,7 +37,6 @@ public class EnemyController : MonoBehaviour
     }
 
     public void DecreaseStrength(float lostStrength)
-
     {
         strength -= lostStrength;
     }
@@ -61,7 +71,7 @@ public class EnemyController : MonoBehaviour
     private float maxHealth = 0;
     private float currentHealth = 0;
 
-    public void SetUpMaxHealth(float newHealth)
+    public void SetMaxHealth(float newHealth)
     {
         maxHealth = newHealth;
         currentHealth = maxHealth;
@@ -82,14 +92,5 @@ public class EnemyController : MonoBehaviour
         return currentHealth;
     }
 
-    // ======================================================
-
-    // =============== HANDLE STATE ========================
-    public enum State
-    {
-        NonDetech,
-        Detech
-    }
-    public State currentState;
     // ======================================================
 }

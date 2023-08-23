@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour
         transform.Translate( moveDir * (moveSpeed * Time.deltaTime));
     }
 
+    // ================= HANDLE HEALTH ======================
     public void SetHealth(int newHealth)
     {
         maxHealth = newHealth;
@@ -138,6 +139,9 @@ public class PlayerController : MonoBehaviour
         return currentHealth;
     }
 
+    // ==========================================
+
+    // ======= HANDLE STAMINA ==============
     public void SetStamina(int newStamina)
     {
         maxStamina = newStamina;
@@ -193,7 +197,7 @@ public class PlayerController : MonoBehaviour
         {
             countTime += Time.deltaTime;
 
-            if (countTime > 1f)
+            if (countTime > 0.5f)
             {
                 IncreaseStamina(1);
 
@@ -201,4 +205,5 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    // ===========================================
 }
