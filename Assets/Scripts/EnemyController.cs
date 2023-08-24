@@ -1,95 +1,88 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    // ==================== HANDLE ===================
-    // ======================================================
+    private float moveSpeed = 3f;
+    private Vector3 moveDir = Vector3.zero;
+    [SerializeField] private GameObject playerRef;
+    private Vector3 prePos;
+    [SerializeField] private bool isDetect;
 
-    // ==================== HANDLE STRENGTH ===================
-    private float strength = 0f;
-
-    public void SetStrength(float newStrength)
+    private void Start()
     {
-        strength = newStrength;
+       
+        EnemyStates.Instance.UpdateState(EnemyStates.States.Idle);
+        prePos = transform.position;
     }
 
-    public float GetStrength()
+    private void Update()
     {
-        return strength;
+        InRange();
+        InAttack();
     }
 
-    public void IncreaseStrength(float addStrength)
+    private void InRange()
     {
-        strength += addStrength;
-    }
-
-    public void DecreaseStrength(float lostStrength)
-
-    {
-        strength -= lostStrength;
-    }
-    // ======================================================
-
-    // ==================== HANDLE SPEED ===================
-    private float speed = 0f;
-
-    public void SetSpeed(float newSpeed)
-    {
-        speed = newSpeed;
-    }
-
-    public float GetSpeed()
-    {
-        return speed;
-    }
-
-    public void IncreaseSpeed(float addSpeed)
-    {
-        speed += addSpeed;
-    }
-
-    public void DecreaseSpeed(float lostSpeed)
-    {
-        speed -= lostSpeed;
-    }
-
-    // ======================================================
-
-    // ================== HANDLE HEALTH ======================
-    private float maxHealth = 0;
-    private float currentHealth = 0;
-
-    public void SetUpMaxHealth(float newHealth)
-    {
-        maxHealth = newHealth;
-        currentHealth = maxHealth;
-    }
-
-    public void TakeDamge(float lostHealth)
-    {
-        currentHealth -= lostHealth;
-
-        if (currentHealth <= 0)
+        if ((Vector3.Distance(playerRef.transform.position, transform.position) > 15f))
         {
-            currentHealth = 0;
+            EnemyStates.Instance.UpdateState(EnemyStates.States.Idle);
+            if (isDetect == true)
+            {
+                StartCoroutine(BackToOrigin());
+            }
         }
+        else if(CalDistance() > 3f && CalDistance() < 10f)
+        {
+            Debug.Log(CalDistance());
+            isDetect = true;
+            EnemyStates.Instance.UpdateState(EnemyStates.States.Chase);
+            Moving();
+        }
+        
+        else if (Vector3.Distance(playerRef.transform.position, transform.position) < 1f)
+        {
+            EnemyStates.Instance.UpdateState(EnemyStates.States.Attack);
+        }
+           
     }
-
-    public float GetCurrentHealth()
+    private void Moving()
     {
-        return currentHealth;
+        moveDir = (playerRef.transform.position - transform.position).normalized;
+        transform.Translate(moveDir * (moveSpeed * Time.deltaTime)) ;
+        FlipX();
     }
-
-    // ======================================================
-
-    // =============== HANDLE STATE ========================
-    public enum State
+    
+    private void InAttack()
     {
-        NonDetech,
-        Detech
+        
     }
-    public State currentState;
-    // ======================================================
+
+    private void FlipX()
+    {
+        if (moveDir.x < 0)
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        else if (moveDir.x > 0)
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+    }
+
+    private float CalDistance()
+    {
+        return Vector3.Distance(playerRef.transform.position,transform.position);
+    }
+
+    IEnumerator BackToOrigin()
+    {
+        yield return new WaitForSeconds(1f);
+        transform.position = Vector3.Lerp(transform.position, prePos, moveSpeed);
+        isDetect = false;
+    }
+    
+
+ 
+
+   
+
 }
