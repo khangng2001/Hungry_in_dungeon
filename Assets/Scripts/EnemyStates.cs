@@ -11,7 +11,8 @@ public class EnemyStates : MonoBehaviour
         Chase,
         Attack,
         Hurt,
-        Die
+        Die,
+        Return
     }
 
     [SerializeField] private Animator animator;
@@ -42,12 +43,42 @@ public class EnemyStates : MonoBehaviour
 
     public void UpdateState(States newState)
     {
-        switch (state)
+        if (newState != state)
+        {
+            switch (state)
+            {
+                case States.Idle:
+                    Animate("Idle");
+                    break;
+                case States.Chase:
+                    Animate("Run");
+                    break;
+                case States.Return:
+                    Animate("Run");
+                    break;
+                case States.Attack:
+                    Animate("Attack");
+                    break;
+                case States.Hurt:
+                
+                    break;
+                case States.Die:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+         state = newState;
+        }
+
+        switch (newState)
         {
             case States.Idle:
                 Animate("Idle");
                 break;
             case States.Chase:
+                Animate("Run");
+                break;
+            case States.Return:
                 Animate("Run");
                 break;
             case States.Attack:
@@ -57,12 +88,10 @@ public class EnemyStates : MonoBehaviour
                 
                 break;
             case States.Die:
-               
                 break;
             default:
-                break;
+                throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
-        state = newState;
     }
 
     private void Animate(string nameClip)
