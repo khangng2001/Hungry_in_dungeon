@@ -117,6 +117,7 @@ public class ConnectMongoDb : MonoBehaviour
 
     private void Awake()
     {
+        SwitchStateSceneStatus(SceneStatus.Loading);
         UpdateUI();
         ConnectMongoDbHID();
     }
