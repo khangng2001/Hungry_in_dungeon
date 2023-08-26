@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class ConnectMongoDb : MonoBehaviour
 {
-    private User user;
+    public User user;
     private App app;
 
     [SerializeField] private GameObject loginUI;
