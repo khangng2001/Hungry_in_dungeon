@@ -7,18 +7,28 @@ using UnityEngine;
 public class Position
 {
     [BsonElement("x")]
-    public float x { get; set; }
+    public float X { get; set; }
     [BsonElement("y")]
-    public float y { get; set; }
+    public float Y { get; set; }
     [BsonElement("z")]
-    public float z { get; set; }
+    public float Z { get; set; }
+}
+
+public class Item
+{
+    [BsonElement("name")]
+    public float Name { get; set; }
+    [BsonElement("count")]
+    public float Count { get; set; }
+    [BsonElement("slot")]
+    public float Slot { get; set; }
 }
 
 public partial class GameData
 {
     [BsonId]
     [BsonElement("_id")]
-    public ObjectId id { get; set; } = ObjectId.GenerateNewId();
+    public ObjectId Id { get; set; } = ObjectId.GenerateNewId();
     [BsonElement("pid")]
     public string Pid { get; set; }
     [BsonElement("name")]
@@ -36,6 +46,5 @@ public partial class GameData
     [BsonElement("damage")]
     public float Damage { get; set; }
     [BsonElement("inventory")]
-    public string Inventory { get; set; }
-
+    public List<Item> Inventory { get; set; }
 }
