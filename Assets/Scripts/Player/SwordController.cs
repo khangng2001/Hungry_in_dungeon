@@ -6,6 +6,8 @@ public class SwordController : MonoBehaviour
 {
     [SerializeField] private GameObject player;
 
+    [SerializeField] private GameObject keng;
+
     private int staminaAttack1 = 2;
     private int staminaAttack2 = 4;
 
@@ -79,5 +81,10 @@ public class SwordController : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
 
         numClick = 0;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Instantiate(keng, collision.ClosestPoint(transform.position), Quaternion.identity);
     }
 }

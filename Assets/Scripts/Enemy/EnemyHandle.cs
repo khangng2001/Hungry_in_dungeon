@@ -12,7 +12,8 @@ public class EnemyHandle : MonoBehaviour
     {
         SetStrength(strengthEnemy);
         SetSpeed(speedEnemy);
-        SetMaxHealth(healththEnemy);    
+        SetMaxHealth(healththEnemy);
+        SetCurrentHealth(healththEnemy);
     }
 
     // ==================== HANDLE ===================
@@ -69,11 +70,15 @@ public class EnemyHandle : MonoBehaviour
 
     // ================== HANDLE HEALTH ======================
     private float maxHealth = 0;
-    private float currentHealth = 0;
+    [SerializeField]private float currentHealth = 0;
 
     public void SetMaxHealth(float newHealth)
     {
         maxHealth = newHealth;
+    }
+
+    public void SetCurrentHealth(float newHealth)
+    {
         currentHealth = maxHealth;
     }
 

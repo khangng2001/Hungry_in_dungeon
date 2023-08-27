@@ -6,17 +6,25 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    private int maxHealth = 0;
-    private int currentHealth = 0;
+    // HEALTH PLAYER
+    private float maxHealth = 0f;
+    private float currentHealth = 0f;
     [SerializeField] private GameObject healthBar;
     [SerializeField] private TextMeshProUGUI textHealthBar;
 
-    private int maxStamina = 0;
-    private int currentStamina = 0;
+    // STAMINA PLAYER
+    private float maxStamina = 0f;
+    private float currentStamina = 0f;
     [SerializeField] private GameObject staminaBar;
     [SerializeField] private TextMeshProUGUI textStaminaBar;
+    
+    // STRENGTH PLAYER
+    [SerializeField] private float strength = 0f;
 
-    private float countTime = 0f;
+    // BLOOD PARTICLE
+    [SerializeField] private GameObject bloodObject;
+
+    private float countTimeIncreaseStamina = 0f;
 
     private Animator ani;
 
@@ -30,8 +38,9 @@ public class PlayerController : MonoBehaviour
         ani = GetComponentInChildren<Animator>();
         input = GetComponent<PlayerInput>();
 
-        SetHealth(100);
+        SetHealth(200);
         SetStamina(20);
+        SetStrength(10);
     }
 
     void Start()
@@ -89,8 +98,17 @@ public class PlayerController : MonoBehaviour
         transform.Translate( moveDir * (moveSpeed * Time.deltaTime));
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("EnemyAttackRange"))
+        {
+            DecreaseHealth(collision.gameObject.GetComponentInParent<EnemyHandle>().GetStrength());
+            Instantiate(bloodObject, transform.position, Quaternion.identity);
+        }
+    }
+
     // ================= HANDLE HEALTH ======================
-    public void SetHealth(int newHealth)
+    public void SetHealth(float newHealth)
     {
         maxHealth = newHealth;
         currentHealth = maxHealth;
@@ -104,7 +122,7 @@ public class PlayerController : MonoBehaviour
         healthBar.GetComponent<Slider>().value = currentHealth;
     }
 
-    public void IncreaseHealth(int newHealth)
+    public void IncreaseHealth(float newHealth)
     {
         if (currentHealth <= maxHealth)
         {
@@ -119,7 +137,7 @@ public class PlayerController : MonoBehaviour
         LoadHealth();
     }
 
-    public void DecreaseHealth(int lostHealth)
+    public void DecreaseHealth(float lostHealth)
     {
         if (currentHealth > 0)
         {
@@ -134,7 +152,7 @@ public class PlayerController : MonoBehaviour
         LoadHealth();
     }
 
-    public int GetHealth()
+    public float GetHealth()
     {
         return currentHealth;
     }
@@ -142,7 +160,7 @@ public class PlayerController : MonoBehaviour
     // ==========================================
 
     // ======= HANDLE STAMINA ==============
-    public void SetStamina(int newStamina)
+    public void SetStamina(float newStamina)
     {
         maxStamina = newStamina;
         currentStamina = maxStamina;
@@ -156,7 +174,7 @@ public class PlayerController : MonoBehaviour
         staminaBar.GetComponent<Slider>().value = currentStamina;
     }
 
-    public void IncreaseStamina(int newStamina)
+    public void IncreaseStamina(float newStamina)
     {
         if (currentStamina < maxStamina)
         {
@@ -171,7 +189,7 @@ public class PlayerController : MonoBehaviour
         LoadStamina();
     }
 
-    public void DecreaseStamina(int lostStamina)
+    public void DecreaseStamina(float lostStamina)
     {
         if (currentStamina >= 0)
         {
@@ -186,7 +204,7 @@ public class PlayerController : MonoBehaviour
         LoadStamina();
     }
 
-    public int GetStamina()
+    public float GetStamina()
     {
         return currentStamina;
     }
@@ -195,15 +213,45 @@ public class PlayerController : MonoBehaviour
     {
         if (currentStamina < maxStamina)
         {
-            countTime += Time.deltaTime;
+            countTimeIncreaseStamina += Time.deltaTime;
 
-            if (countTime > 0.5f)
+            if (countTimeIncreaseStamina > 0.5f)
             {
                 IncreaseStamina(1);
 
-                countTime = 0;
+                countTimeIncreaseStamina = 0;
             }
         }
+    }
+    // ===========================================
+
+    // ======= HANDLE STRENGTH ==============
+    public void SetStrength(float newStrength)
+    {
+        strength = newStrength;
+    }
+
+    public void IncreaseStength(float newStrength)
+    {
+        strength += newStrength;
+    }
+
+    public void DecreaseStength(float lostStrength)
+    {
+        if (strength >= 0)
+        {
+            strength -= lostStrength;
+
+            if (strength < 0)
+            {
+                strength = 0;
+            }
+        }
+    }
+
+    public float GetStrength()
+    {
+        return strength;
     }
     // ===========================================
 }
