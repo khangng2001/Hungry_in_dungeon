@@ -91,6 +91,7 @@ public class ConnectMongoDb : MonoBehaviour
             SwitchStateSceneStatus(SceneStatus.Loading);
             user = await app.LogInAsync(Credentials.EmailPassword(nameLoginField.text, passLoginField.text));
             SwitchStateSceneStatus(SceneStatus.Login);
+            Debug.Log("User.Id: " + user.Id);
             SceneManager.LoadScene(1);
         }
         catch (AppException ex)
@@ -120,5 +121,6 @@ public class ConnectMongoDb : MonoBehaviour
         SwitchStateSceneStatus(SceneStatus.Loading);
         UpdateUI();
         ConnectMongoDbHID();
+        DontDestroyOnLoad(this.gameObject);
     }
 }
