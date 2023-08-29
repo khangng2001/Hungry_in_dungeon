@@ -1,5 +1,6 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Realms;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class Position
 public class Item
 {
     [BsonElement("name")]
-    public float Name { get; set; }
+    public string Name { get; set; }
     [BsonElement("count")]
     public float Count { get; set; }
     [BsonElement("slot")]
@@ -27,7 +28,7 @@ public class Item
 public partial class GameData
 {
     [BsonId]
-    [BsonElement("_id")]
+    [BsonRepresentation(BsonType.ObjectId)]
     public ObjectId Id { get; set; } = ObjectId.GenerateNewId();
     [BsonElement("pid")]
     public string Pid { get; set; }
