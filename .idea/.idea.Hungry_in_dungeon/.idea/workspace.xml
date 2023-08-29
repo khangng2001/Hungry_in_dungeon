@@ -5,18 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="caa4e4eb-c549-4ef1-bdc9-59b9aeb58108" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Materials.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Light.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Light.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene 1.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene 1.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FieldOfView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FieldOfView.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ultilities.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ultilities.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Idle_down.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Idle_down.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Idle_left.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Idle_left.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Idle_right.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Idle_right.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Idle_up.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Idle_up.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Walk_down.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Walk_down.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Walk_left.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Walk_left.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Walk_right.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Walk_right.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Walk_up.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Walk_up.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Boss.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Boss/NavMesh-Navmesh.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Boss/NavMesh-Navmesh.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/GuardAI.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/GuardAI/TaskPatrol.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/GuardAI/TaskPatrol.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/Selector.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/Selector.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/Sequence.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/Sequence.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/Tree.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/Tree.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/DragonController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/DragonController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Hungry_in_dungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Hungry_in_dungeon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemies/New Folder.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +48,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fc327b7fe2814a8a95c1d82cb6a3071e15a000/0a/f63c3b5f/Color32.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fc327b7fe2814a8a95c1d82cb6a3071e15a000/7f/22892ac6/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fc327b7fe2814a8a95c1d82cb6a3071e15a000/e4/92ee9bb9/Light2DBase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FieldOfView.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ultilities.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/GuardAI/TaskPatrol.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/Sequence.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/Tree.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/DragonController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.12/Runtime/2D/Light2D.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -59,7 +82,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.editor",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -119,6 +142,7 @@
       <workItem from="1692197104031" duration="147000" />
       <workItem from="1692240917630" duration="12134000" />
       <workItem from="1692346418200" duration="12091000" />
+      <workItem from="1693193767389" duration="16889000" />
     </task>
     <servers />
   </component>
