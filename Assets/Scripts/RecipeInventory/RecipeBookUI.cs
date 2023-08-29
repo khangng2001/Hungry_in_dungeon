@@ -22,6 +22,7 @@ public class RecipeBookUI : MonoBehaviour
     {
         RecipePaperUI paperUI = Instantiate(recipePaperPrefab, Vector3.zero, Quaternion.identity);
         paperUI.transform.SetParent(contentPanel);
+        paperUI.transform.localScale = Vector3.one;
         paperUI.recipeSO = testGiveRecipe.GiveRecipeSO();   //gan recipeSO vao paperUI
         paperUI.SetData(paperUI.recipeSO.RecipeImage);
         listOfPaperUI.Add(paperUI);
