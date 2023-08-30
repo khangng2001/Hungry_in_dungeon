@@ -13,6 +13,7 @@ namespace Enemy.Behavior_Tree.GuardAI
         private bool waiting = false;
         private bool isIdle = false;
         private Animator animator;
+        private Vector3 dir = Vector3.zero;
         
         public TaskPatrol(Transform transform, Transform[] waypoints)
         {
@@ -36,7 +37,7 @@ namespace Enemy.Behavior_Tree.GuardAI
                 Transform wp = _waypoints[currentWaypointIndex];
                 if (Vector3.Distance(_transform.position, wp.position) < 0.1f)
                 {
-                    isIdle = true;
+                    animator.SetBool("isMoving", false);
                     _transform.position = wp.position;
                     waitCounter = 0;
                     waiting = true;
@@ -44,31 +45,21 @@ namespace Enemy.Behavior_Tree.GuardAI
                 }
                 else
                 {
+                    animator.SetBool("isMoving", true);
                     _transform.position = Vector3.MoveTowards(
                         _transform.position,
                         wp.position,
                         1.5f * Time.deltaTime);
-                    /*_transform.LookAt(wp.position);*/
+                    Vector3 dir = wp.position - _transform.position;
+                    animator.SetFloat("verticalMovement", dir.y);
+                    animator.SetFloat("horizontalMovement", dir.x);
+
                 }
             }
             nodeState = NodeState.Running;
-            Animate();
             return nodeState;
         }
-
-        public void Animate()
-        {
-            isIdle = _transform.position.x == 0 && _transform.position.y == 0;
-            if (isIdle)
-            {
-                animator.SetBool("isMoving", false);
-            }
-            else
-            {
-                animator.SetFloat("verticalMovement", _transform.position.y);
-                animator.SetFloat("horizontalMovement", _transform.position.x);
-            }
-        }
+        
         
     }
 }
