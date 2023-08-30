@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
@@ -9,6 +10,9 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventoryItemPrefab;
     [SerializeField] private int maxStackedItems = 5;
     public int tempMaxStackedItems = 5;
+
+    [SerializeField] private List<GameObject> itemPrefab;
+    [SerializeField] private GameObject player;
 
     int selectedSlot = -1;
 
@@ -137,7 +141,14 @@ public class InventoryManager : MonoBehaviour
 
     public void DropItemOnGround(InventoryItem item)
     {
-
+        for (int i = 0; i < itemPrefab.Count; i++)
+        {
+            ItemObject itemO = itemPrefab[i].GetComponent<ItemObject>();
+            if (itemO.GetItem() == item.item)
+            {
+                Instantiate(itemPrefab[i], player.transform.position, Quaternion.identity);
+            }
+        }
     }
 
     //Add Item when Load game
