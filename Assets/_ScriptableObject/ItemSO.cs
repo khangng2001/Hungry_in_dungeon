@@ -11,7 +11,7 @@ public class ItemSO : ScriptableObject
 
     [Header("Both")]
     public Sprite image;
-    public string name;
+    public string id;
     public int health;
     public int stamina;
 }

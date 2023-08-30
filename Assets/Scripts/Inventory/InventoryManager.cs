@@ -118,9 +118,7 @@ public class InventoryManager : MonoBehaviour
             if (itemInSlot == null)
             {
                 GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
-                newItemGo.GetComponent<InventoryItem>().SwapItem(item.item, item.count);//.item = item.item;   //attach ItemSO
-                //newItemGo.GetComponent<InventoryItem>().image = item.image; //attach Image
-                //item.SwapItem(item.item, item.count);
+                newItemGo.GetComponent<InventoryItem>().SwapItem(item.item, item.count);    //attach ItemSO
                 return;
             }
         }
@@ -140,5 +138,14 @@ public class InventoryManager : MonoBehaviour
     public void DropItemOnGround(InventoryItem item)
     {
 
+    }
+
+    //Add Item when Load game
+    public void LoadSpawnItem(ItemSO item, InventorySlot slot, int count)
+    {
+        GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
+        InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
+        inventoryItem.count = count;
+        inventoryItem.InitialiseItem(item);
     }
 }
