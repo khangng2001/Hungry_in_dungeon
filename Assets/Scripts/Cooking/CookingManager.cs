@@ -136,7 +136,7 @@ public class CookingManager : MonoBehaviour
             {
                 if (item != null)
                 {
-                    currentRecipeString += item.name;
+                    currentRecipeString += item.id;
                 } else {
                     currentRecipeString += "null";
                 }

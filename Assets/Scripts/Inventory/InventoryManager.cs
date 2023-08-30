@@ -7,8 +7,8 @@ public class InventoryManager : MonoBehaviour
 
     public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
-    [SerializeField] private int maxStackedItems = 4;
-    public int tempMaxStackedItems = 4;
+    [SerializeField] private int maxStackedItems = 5;
+    public int tempMaxStackedItems = 5;
 
     int selectedSlot = -1;
 
