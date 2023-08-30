@@ -7,6 +7,11 @@ public class LegController : MonoBehaviour
     public bool fall = false;
     [SerializeField] private GameObject player;
 
+    private void Awake()
+    {
+        player = transform.parent.gameObject;   
+    }
+
     private void Update()
     {
         if (fall)
@@ -35,6 +40,12 @@ public class LegController : MonoBehaviour
         if (collision.CompareTag("Hole"))
         {
             fall = true;
+        }
+
+        if (collision.CompareTag("Trap"))
+        {
+            player.GetComponent<PlayerController>().DecreaseHealth(10f);
+            player.GetComponent<PlayerController>().BloodOut();
         }
     }
 }

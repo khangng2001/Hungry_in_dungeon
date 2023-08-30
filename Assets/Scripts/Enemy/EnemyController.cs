@@ -125,6 +125,8 @@ public class EnemyController : MonoBehaviour
 
         rangeHurt = GetComponentInChildren<RangeHurt>();
 
+        rangeDetect = transform.parent.gameObject.GetComponentInChildren<RangeDetect>();
+
         animator = GetComponentInChildren<Animator>();
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -133,6 +135,7 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         changeState = State.Idle;
+
 
         // NavMesh
         agent = GetComponent<NavMeshAgent>();
@@ -154,18 +157,25 @@ public class EnemyController : MonoBehaviour
         //
 
         // Get Distance (Kilometer)
-        KilometerToPlayer();
         KilometerToOldPosition();
         //
 
         FlipX();
 
-        SetOrderLayer();
+        // HANDLE FROM PLAYER
+        if (player != null)
+        {
+            SetOrderLayer();
+            KilometerToPlayer();
+        }
 
         SwitchState(changeState);
 
         if (rangeDetect.GetIsDetect())
         {
+            // GET PLAYER FROM RANGE DETECT
+            player = rangeDetect.GetComponent<RangeDetect>().player;
+
             if (enemyHandle.GetCurrentHealth() <= 0f)
             {
                 if (canReborn)
