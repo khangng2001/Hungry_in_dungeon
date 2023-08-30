@@ -8,6 +8,8 @@ TagManager:
   - Sword
   - EnemyAttackRange
   - Hole
+  - Trap
+  - Leg
   layers:
   - Default
   - TransparentFX

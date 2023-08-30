@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class DetectLight : MonoBehaviour
 {
+    List<Collider2D> colliders = new List<Collider2D>();
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Light"))
         {
             GetComponentInChildren<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
 
+            colliders.Add(collision);
         }
     }
 
@@ -26,7 +29,12 @@ public class DetectLight : MonoBehaviour
     {
         if (collision.CompareTag("Light"))
         {
-            GetComponentInChildren<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+            colliders.Remove(collision);
+
+            if (colliders.Count == 0)
+            {
+                GetComponentInChildren<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+            }
         }
     }
 }
