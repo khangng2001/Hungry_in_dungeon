@@ -20,9 +20,9 @@ public class Item
     [BsonElement("name")]
     public string Name { get; set; }
     [BsonElement("count")]
-    public float Count { get; set; }
+    public int Count { get; set; }
     [BsonElement("slot")]
-    public float Slot { get; set; }
+    public int Slot { get; set; }
 }
 
 public partial class GameData
@@ -41,11 +41,11 @@ public partial class GameData
     [BsonElement("health")]
     public int Health { get; set; }
     [BsonElement("exp")]
-    public float Exp { get; set; }
+    public int Exp { get; set; }
     [BsonElement("level")]
     public int Level { get; set; }
     [BsonElement("damage")]
-    public float Damage { get; set; }
+    public int Damage { get; set; }
     [BsonElement("inventory")]
-    public List<Item> Inventory { get; set; }
+    public List<Item> inventory { get; set; }
 }

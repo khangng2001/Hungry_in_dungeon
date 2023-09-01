@@ -3421,7 +3421,7 @@ MonoBehaviour:
   passLoginField: {fileID: 67375274}
   nameRegisterField: {fileID: 51210903}
   passRegisterField: {fileID: 1873753225}
-  appID: application-0-njcbq
+  appID: hungryindungeon-wedpp
 --- !u!4 &1534916575
 Transform:
   m_ObjectHideFlags: 0

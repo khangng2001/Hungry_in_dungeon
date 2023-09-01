@@ -20,7 +20,7 @@ public class ConnectMongoDb : MonoBehaviour
     [SerializeField] private TMP_InputField nameRegisterField;
     [SerializeField] private TMP_InputField passRegisterField;
 
-    [SerializeField] private string appID = "application-0-njcbq";
+    [SerializeField] private string appID = "hungryindungeon-wedpp";
 
     private enum SceneStatus
     {
@@ -118,9 +118,9 @@ public class ConnectMongoDb : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(this.gameObject);
         SwitchStateSceneStatus(SceneStatus.Loading);
         UpdateUI();
         ConnectMongoDbHID();
-        DontDestroyOnLoad(this.gameObject);
     }
 }
