@@ -13,6 +13,6 @@ public class ChangeScene : MonoBehaviour
 
     void LoadNewScene()
     {
-        SceneManager.LoadScene("TestSingleton");
+        SceneManager.LoadScene("SingletonTest");
     }
 }

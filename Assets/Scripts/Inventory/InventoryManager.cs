@@ -18,11 +18,14 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
-        MakeSingleton();
+        instance = this;
+        //MakeSingleton();
         tempMaxStackedItems = maxStackedItems;
+
+        GameManager.instance.LoadDataInventory();
     }
 
-    void MakeSingleton()
+    /*void MakeSingleton()
     {
         if (instance != null)
         {
@@ -33,7 +36,7 @@ public class InventoryManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-    }
+    }*/
 
     private void Update()
     {
@@ -47,6 +50,8 @@ public class InventoryManager : MonoBehaviour
                 ResetSelectedSlot();
             }
         }
+
+        GameManager.instance.SaveDataInventory();
     }
 
     void ChangeSelectedSlot(int newValue)
@@ -168,6 +173,42 @@ public class InventoryManager : MonoBehaviour
     public void LoadSpawnItem(ItemSO item, InventorySlot slot, int count)
     {
         GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
+        InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
+        inventoryItem.count = count;
+        inventoryItem.InitialiseItem(item);
+    }
+
+
+    //Save 
+    public ItemSO SaveDataItem(int i)
+    {
+        InventorySlot slot = inventorySlots[i];
+        InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+        if (itemInSlot != null)
+        {
+            return itemInSlot.item; 
+        } else
+        {
+            return null;
+        }
+    }
+    public int SaveDataCount(int i)
+    {
+        InventorySlot slot = inventorySlots[i];
+        InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+        if (itemInSlot != null)
+        {
+            return itemInSlot.count; 
+        }
+        else {
+            return 0;
+        }
+        
+    }
+    //Load
+    public void LoadData(int i, ItemSO item, int count)
+    {
+        GameObject newItemGo = Instantiate(inventoryItemPrefab, inventorySlots[i].transform);
         InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
         inventoryItem.count = count;
         inventoryItem.InitialiseItem(item);
