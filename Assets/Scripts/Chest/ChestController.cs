@@ -8,7 +8,15 @@ public class ChestController : MonoBehaviour
 
     private Animator animator;
 
-    [SerializeField] private GameObject interactionUI;
+    public bool PRESS_E = false;
+
+    public bool PRESS_E_LAST = false;
+
+    [SerializeField] private GameObject textEBefore;
+
+    [SerializeField] private GameObject textEAfter;
+
+    [SerializeField] private GameObject key;
 
     private void Awake()
     {
@@ -28,26 +36,45 @@ public class ChestController : MonoBehaviour
     {
         if (rangeOpen.GetIsIn())
         {
-            interactionUI.SetActive(true);
+            if (!PRESS_E)
+            {
+                textEBefore.SetActive(true);
+            }
+            else if (PRESS_E && !PRESS_E_LAST)
+            {
+                textEAfter.SetActive(true);
+            }
         }
         else
         {
-            interactionUI.SetActive(false);
+            textEBefore.SetActive(false);
+            textEAfter.SetActive(false);
         }
     }
 
     private void CheckClickOpen()
     {
-        if (interactionUI.activeSelf)
+        if (textEAfter.activeSelf)
+        {
+            if (Input.GetKeyDown(KeyCode.E) && !PRESS_E_LAST)
+            {
+                PRESS_E_LAST = true;
+                textEAfter.SetActive(false);
+
+                // HADLE KEY
+                key.SetActive(false);
+                //
+            }
+        }
+        else if (textEBefore.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 animator.Play("Open");
+                PRESS_E = true;
+                textEBefore.SetActive(false);
+                key.GetComponentInChildren<Animator>().Play("Show");
             }
-        }
-        else
-        {
-            animator.Play("Close");
         }
     }
 }

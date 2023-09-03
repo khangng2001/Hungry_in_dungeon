@@ -6,6 +6,8 @@ public class RangeDetect : MonoBehaviour
 {
     [SerializeField] private bool isDetect;
 
+    public GameObject player;
+
     private void Awake()
     {
         isDetect = false;
@@ -20,6 +22,8 @@ public class RangeDetect : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            player = collision.gameObject;
+
             isDetect = true;
         }
     }

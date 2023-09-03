@@ -98,12 +98,17 @@ public class PlayerController : MonoBehaviour
         transform.Translate( moveDir * (moveSpeed * Time.deltaTime));
     }
 
+    public void BloodOut()
+    {
+        Instantiate(bloodObject, transform.position, Quaternion.identity);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("EnemyAttackRange"))
         {
             DecreaseHealth(collision.gameObject.GetComponentInParent<EnemyHandle>().GetStrength());
-            Instantiate(bloodObject, transform.position, Quaternion.identity);
+            BloodOut();
         }
     }
 

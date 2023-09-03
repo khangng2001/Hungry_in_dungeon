@@ -8,6 +8,8 @@ public class SwordController : MonoBehaviour
 
     [SerializeField] private GameObject keng;
 
+    public bool CLICK = false;
+
     private int staminaAttack1 = 2;
     private int staminaAttack2 = 4;
 
@@ -24,7 +26,7 @@ public class SwordController : MonoBehaviour
     {
         if (player.GetComponent<PlayerController>().GetStamina() >= staminaAttack1)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (CLICK)
             {
                 if (numClick == 0)
                 {
@@ -32,6 +34,7 @@ public class SwordController : MonoBehaviour
                     StartCoroutine(timeOfAttack_1());
                 }
                 numClick++;
+                CLICK = false;
             }
         }
         else
