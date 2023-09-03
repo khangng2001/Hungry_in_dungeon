@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3729420422428114568}
   - component: {fileID: 3934611573008366745}
-  - component: {fileID: 3729420422428114575}
+  - component: {fileID: 8280354733510728131}
   - component: {fileID: 3522713095981678563}
   m_Layer: 0
   m_Name: Egg
@@ -171,8 +171,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &3729420422428114575
-CapsuleCollider2D:
+--- !u!61 &8280354733510728131
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -184,9 +184,19 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010481477, y: 0.027433038}
-  m_Size: {x: 2.4581969, y: 3.0552924}
-  m_Direction: 0
+  m_Offset: {x: -0.010481954, y: 0.010482669}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.1, y: 3.3}
+    newSize: {x: 3.1, y: 3.3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.2886565, y: 3.6144197}
+  m_EdgeRadius: 0
 --- !u!114 &3522713095981678563
 MonoBehaviour:
   m_ObjectHideFlags: 0

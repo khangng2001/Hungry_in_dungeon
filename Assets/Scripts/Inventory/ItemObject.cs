@@ -26,9 +26,8 @@ public class ItemObject : MonoBehaviour
     {
         if (check)
         {
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("destroyed!");
                 InventoryManager.instance.AddItem(item);
                 Destroy(this.gameObject);
             }

@@ -18,8 +18,21 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        MakeSingleton();
         tempMaxStackedItems = maxStackedItems;
+    }
+
+    void MakeSingleton()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     private void Update()

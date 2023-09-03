@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CookingManager : MonoBehaviour
 {
+    public static CookingManager instance;
+
     public event EventHandler<OnProgressBarChangedEventArgs> OnProgressBarChanged;
     public class OnProgressBarChangedEventArgs : EventArgs
     {
@@ -14,9 +16,9 @@ public class CookingManager : MonoBehaviour
     [SerializeField] private float cookingProgressMax;
     [SerializeField] private float cookingProgressTimer;
 
-    public static CookingManager instance;
-
+    [SerializeField] private GameObject dropItemZone;
     [SerializeField] private CookingUI cookingUI;
+    [SerializeField] private GameObject interactUI;
 
     public CookingSlot[] cookingSlots;
     [SerializeField] private GameObject resultSlot;
@@ -41,8 +43,40 @@ public class CookingManager : MonoBehaviour
 
     private void Awake()
     {
+        //MakeSingleton();
         cookingUI.Hide();
+        interactUI.SetActive(false);
         cookBtn.SetActive(false);
+    }
+
+    void MakeSingleton()
+    {
+        /*if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }*/
+    }
+
+    [SerializeField] private float distanceToPlayer;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject campfire;
+    private bool CheckDistance()
+    {
+        distanceToPlayer = Vector3.Distance(player.transform.position, campfire.transform.position);
+        if (distanceToPlayer <= 2f)
+        {
+            interactUI.SetActive(true);
+            return true;
+        } else
+        {
+            interactUI.SetActive(false);
+            return false;
+        }
     }
 
     private void Start()
@@ -52,23 +86,32 @@ public class CookingManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (CheckDistance())
         {
-            if (cookingUI.isActiveAndEnabled == false)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                cookingUI.Show();
-                open = true;
+                if (cookingUI.isActiveAndEnabled == false)
+                {
+                    cookingUI.Show();
+                    open = true;
+                    dropItemZone.SetActive(false);
+                }
+                else
+                {
+                    cookingUI.Hide();
+                    open = false;
+                    dropItemZone.SetActive(true);
+                }
             }
-            else
-            {
-                cookingUI.Hide();
-                open = false;
-            }
+        } else
+        {
+            cookingUI.Hide();
         }
 
         //run CookBar
         if (open)
         {
+            dropItemZone.SetActive(false);
             switch (state)
             {
                 case State.Idle:
