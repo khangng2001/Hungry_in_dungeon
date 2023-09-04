@@ -1,18 +1,50 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameData : MonoBehaviour
+public class Position
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [BsonElement("x")]
+    public float X { get; set; }
+    [BsonElement("y")]
+    public float Y { get; set; }
+    [BsonElement("z")]
+    public float Z { get; set; }
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public class Item
+{
+    [BsonElement("name")]
+    public string Name { get; set; }
+    [BsonElement("count")]
+    public int Count { get; set; }
+    [BsonElement("slot")]
+    public int Slot { get; set; }
+}
+
+public partial class GameData
+{
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public ObjectId Id { get; set; } = ObjectId.GenerateNewId();
+    [BsonElement("pid")]
+    public string Pid { get; set; }
+    [BsonElement("name")]
+    public string Name { get; set; }
+    [BsonElement("scene")]
+    public int Scene { get; set; }
+    [BsonElement("position")]
+    public Position Position { get; set; }
+    [BsonElement("health")]
+    public int Health { get; set; }
+    [BsonElement("exp")]
+    public int Exp { get; set; }
+    [BsonElement("level")]
+    public int Level { get; set; }
+    [BsonElement("damage")]
+    public int Damage { get; set; }
+    [BsonElement("inventory")]
+    public List<Item> inventory { get; set; }
 }
