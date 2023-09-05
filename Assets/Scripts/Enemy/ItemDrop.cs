@@ -20,19 +20,22 @@ namespace Enemy
         
         }
 
-        private void OnDestroy()
+        /*private void OnDestroy()
         {
             if (itemList.Length > 0 && spawnChance > Random.value)
             {
                 int randomIndex = Random.Range(0, itemList.Length);
                 Instantiate(itemList[randomIndex], gameObject.transform.position, Quaternion.identity);
             }
-        }
+        }*/
 
         public void DropItem()
         {
-            int randomIndex = Random.Range(0, itemList.Length);
-            Instantiate(itemList[randomIndex], gameObject.transform.position, Quaternion.identity);
+            if (itemList.Length > 0 && spawnChance > Random.value)
+            {
+                int randomIndex = Random.Range(0, itemList.Length);
+                Instantiate(itemList[randomIndex], gameObject.transform.position, Quaternion.identity);
+            }
         }
     }
 }
