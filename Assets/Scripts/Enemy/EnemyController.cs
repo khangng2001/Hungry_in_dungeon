@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Enemy;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -305,7 +306,7 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // Roi vat pham 
-
+        GetComponent<ItemDrop>().DropItem();
         //
 
         Destroy(gameObject);

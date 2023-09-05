@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     // HEALTH PLAYER
     private float maxHealth = 0f;
-    private float currentHealth = 0f;
+    [SerializeField]  private float currentHealth = 0f;
     [SerializeField] private GameObject healthBar;
     [SerializeField] private TextMeshProUGUI textHealthBar;
 
