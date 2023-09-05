@@ -15,6 +15,7 @@ namespace Enemy.Behavior_Tree.GuardAI
         private Animator animator;
         private Vector3 dir = Vector3.zero;
         
+        
         public TaskPatrol(Transform transform, Transform[] waypoints)
         {
             _transform = transform;
