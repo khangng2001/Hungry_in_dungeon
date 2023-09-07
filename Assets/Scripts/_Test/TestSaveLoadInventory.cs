@@ -12,6 +12,7 @@ public class TestSaveLoadInventory : MonoBehaviour
     public int position, count;
     public string id;
 
+    //upload data
     public void SaveInventory()
     {
         for (int i = 0; i < inventorySlots.Length; i++)
@@ -25,7 +26,7 @@ public class TestSaveLoadInventory : MonoBehaviour
         }
     }
 
-    public void LoadInventory()
+    /*public void LoadInventory()
     {
         //clear items in slots
         for (int i = 0; i < inventorySlots.Length; i++)
@@ -42,14 +43,28 @@ public class TestSaveLoadInventory : MonoBehaviour
         {
             LoadInventory(position, id, count);
         }
-    }
+    }*/
 
-    public void LoadInventory(int position, string name, int count)
+    //download data
+    private void ClearAllItem()
     {
-        for (int i = 0; i < itemName.Length; i++)
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            InventorySlot slot = inventorySlots[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null)
+            {
+                Destroy(itemInSlot.gameObject);
+            }
+        }
+    }
+    public void LoadInventory(int position, string id, int count)
+    {
+        ClearAllItem();
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
             InventoryItem itemInSlot = inventorySlots[position].GetComponentInChildren<InventoryItem>();
-            if (itemName[i] == name && itemInSlot == null)
+            if (itemName[i] == id && itemInSlot == null)
             {
                 InventoryManager.instance.LoadSpawnItem(item[i], inventorySlots[position], count);
 

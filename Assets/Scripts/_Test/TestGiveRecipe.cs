@@ -7,7 +7,7 @@ public class TestGiveRecipe : MonoBehaviour
 
     [SerializeField] private List<RecipeSO> recipePapers;
 
-    public RecipeSO RandomRecipeSO()
+    /*public RecipeSO RandomRecipeSO()
     {
         RecipeSO temp = new RecipeSO();
         temp = recipePapers[0];
@@ -18,7 +18,7 @@ public class TestGiveRecipe : MonoBehaviour
     public RecipeSO GiveRecipeSO()
     {
         return RandomRecipeSO();
-    }
+    }*/
 
     public void AddRecipe()
     {
