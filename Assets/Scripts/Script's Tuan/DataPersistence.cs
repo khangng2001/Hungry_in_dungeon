@@ -20,19 +20,21 @@ public class DataPersistence : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------------------------------
 
-    private void Awake()
+    private async void Awake()
     {
         try
         {
-            User user = GameObject.FindObjectOfType<ConnectMongoDb>().GetComponent<ConnectMongoDb>().user;
-            var mongoDbClient = user.GetMongoClient("mongodb-atlas");
-            var database = mongoDbClient.GetDatabase("HungryInDungeon");
-            collection = database.GetCollection<GameData>("Player");
+            //User user = GameObject.FindObjectOfType<ConnectMongoDb>().GetComponent<ConnectMongoDb>().user;
+            //var mongoDbClient = user.GetMongoClient("mongodb-atlas");
+            //var database = mongoDbClient.GetDatabase("HungryInDungeon");
+            //collection = database.GetCollection<GameData>("Player");
 
-            FindPlayerPid(user.Id);
-            Debug.Log("pid: " + pid);
-            NewGame();
-            this.dataHandler = new CloudDataHandler(collection);
+            //pid = await FindPlayerPid(user.Id);
+            //Debug.Log("pid: " + pid);
+            //this.dataHandler = new CloudDataHandler(collection);
+
+            //dataPersistencesObjects = FindAllDataPersistenceObjects();
+            //LoadGame();
 
             if (instance != null)
             {
@@ -61,11 +63,21 @@ public class DataPersistence : MonoBehaviour
         SceneManager.sceneUnloaded -= OnSceneUnLoaded;
     }
 
-    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public async void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("OnSceneLoaded Called");
+        User user = GameObject.FindObjectOfType<ConnectMongoDb>().GetComponent<ConnectMongoDb>().user;
+        var mongoDbClient = user.GetMongoClient("mongodb-atlas");
+        var database = mongoDbClient.GetDatabase("HungryInDungeon");
+        collection = database.GetCollection<GameData>("Player");
+
+        pid = await FindPlayerPid(user.Id);
+        Debug.Log("pid: " + pid);
+
+        this.dataHandler = new CloudDataHandler(collection);
+
         dataPersistencesObjects = FindAllDataPersistenceObjects();
-        LoadGame();
+        //LoadGame();
     }
 
     public void OnSceneUnLoaded(Scene scene)
@@ -74,16 +86,17 @@ public class DataPersistence : MonoBehaviour
         SaveGame();
     }
 
-    private async void FindPlayerPid(string findPid)
+    private async Task<string> FindPlayerPid(string findPid)
     {
         try
         {
             GameData myAccount = await collection.FindOneAsync(new {pid = findPid});
-            pid = myAccount.Pid;
+            return myAccount.Pid;
         }
         catch (AppException ex)
         {
             Debug.LogException(ex);
+            return null;  
         }
     }
 
@@ -99,6 +112,7 @@ public class DataPersistence : MonoBehaviour
         GameData myAccount = await collection.FindOneAsync(new { pid = pid });
 
         // Load any saved data from a player in mongodb
+        Debug.Log("pid error: " + myAccount.Pid);
         myAccount = await dataHandler.Load(myAccount.Pid);
         
         // Push the load data to all other script that need it

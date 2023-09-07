@@ -13,6 +13,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void OnLoadGameClicked()
     {
+        DataPersistence.instance.LoadGame();
         SceneManager.LoadScene(2);
     }
 }
