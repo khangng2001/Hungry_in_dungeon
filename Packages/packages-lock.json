@@ -243,10 +243,11 @@
       "url": "https://packages.unity.com"
     },
     "io.realm.unity": {
-      "version": "file:C:/Users/Tuan Dep Trai/Downloads/io.realm.unity-11.3.0.tgz",
+      "version": "11.3.0",
       "depth": 0,
-      "source": "local-tarball",
-      "dependencies": {}
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://registry.npmjs.org"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
