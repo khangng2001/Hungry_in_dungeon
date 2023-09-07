@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDetect: 0
+  player: {fileID: 0}
 --- !u!1001 &8306978255436105537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -172,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4688579384011929293, guid: 4fdab7822599a054fa69fe57a4f71bd5, type: 3}
       propertyPath: m_InstanceId
-      value: -192828
+      value: -97250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fdab7822599a054fa69fe57a4f71bd5, type: 3}
@@ -250,7 +251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4688579384011929293, guid: 4fdab7822599a054fa69fe57a4f71bd5, type: 3}
       propertyPath: m_InstanceId
-      value: -192478
+      value: -97298
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fdab7822599a054fa69fe57a4f71bd5, type: 3}
@@ -329,10 +330,6 @@ PrefabInstance:
     - target: {fileID: 4688579384011929293, guid: 4fdab7822599a054fa69fe57a4f71bd5, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4688579384011929293, guid: 4fdab7822599a054fa69fe57a4f71bd5, type: 3}
-      propertyPath: m_InstanceId
-      value: -192244
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fdab7822599a054fa69fe57a4f71bd5, type: 3}

@@ -100,7 +100,7 @@ public class InventoryManager : MonoBehaviour
                 ItemSO item = itemInSlot.item;
                 if (use == true)
                 {
-                    //HAm add(health, stamina)
+                    //HAm add(item.health, item.stamina)
                     itemInSlot.count--;
                     if (itemInSlot.count <= 0)
                     {
@@ -165,6 +165,7 @@ public class InventoryManager : MonoBehaviour
         inventoryItem.InitialiseItem(item);
     }
 
+    //Remove all Item when Player Die
 
     //Save 
     public ItemSO SaveDataItem(int i)

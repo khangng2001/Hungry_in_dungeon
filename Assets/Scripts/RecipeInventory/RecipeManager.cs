@@ -18,6 +18,7 @@ public class RecipeManager : MonoBehaviour
     {
         instance = this;
         recipeBookUI.Hide();
+        GameManager.instance.LoadDataRecipe();
     }
 
     void Update()
@@ -34,8 +35,6 @@ public class RecipeManager : MonoBehaviour
                 recipeBookUI.Hide();
             }
         }
-
-        GameManager.instance.SaveDataRecipe();
     }
 
     public void AddRecipe(RecipeSO recipeSO)
@@ -56,7 +55,7 @@ public class RecipeManager : MonoBehaviour
         obj.Select();
     }
 
-    //SaveData
+    //Save,LoadData
     public RecipeSO SaveDataRecipe(int i)
     {
         if (listOfPaperUI[i] != null)
@@ -68,6 +67,10 @@ public class RecipeManager : MonoBehaviour
             return null;
         }
     }
+    /*public void LoadDataRecipe()
+    {
+
+    }*/
 
     //Hide, Show
     private void ResetSelection()

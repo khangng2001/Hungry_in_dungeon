@@ -23,7 +23,7 @@ public class TestGiveRecipe : MonoBehaviour
     public void AddRecipe()
     {
         RecipeManager.instance.AddRecipe(recipePapers[0]);
-        GameManager.instance.SaveDataRecipe();
         recipePapers.Remove(recipePapers[0]);
+        GameManager.instance.SaveDataRecipe();
     }
 }

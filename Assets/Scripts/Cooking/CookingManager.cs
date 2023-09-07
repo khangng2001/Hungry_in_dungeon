@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -49,34 +48,12 @@ public class CookingManager : MonoBehaviour
         cookBtn.SetActive(false);
     }
 
-    void MakeSingleton()
+    private Collider2D hit = null;
+    [SerializeField] private LayerMask playerMask;
+    [SerializeField] private float radiusCheck;
+    private void CheckPlayer()
     {
-        /*if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }*/
-    }
-
-    [SerializeField] private float distanceToPlayer;
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject campfire;
-    private bool CheckDistance()
-    {
-        distanceToPlayer = Vector3.Distance(player.transform.position, campfire.transform.position);
-        if (distanceToPlayer <= 2f)
-        {
-            interactUI.SetActive(true);
-            return true;
-        } else
-        {
-            interactUI.SetActive(false);
-            return false;
-        }
+        hit = Physics2D.OverlapCircle(transform.position, radiusCheck, playerMask);
     }
 
     private void Start()
@@ -86,8 +63,10 @@ public class CookingManager : MonoBehaviour
 
     private void Update()
     {
-        if (CheckDistance())
+        CheckPlayer();
+        if (hit!= null)
         {
+            interactUI.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (cookingUI.isActiveAndEnabled == false)
@@ -106,9 +85,18 @@ public class CookingManager : MonoBehaviour
         } else
         {
             cookingUI.Hide();
+            interactUI.SetActive(false);
         }
 
         //run CookBar
+        SwitchState();
+
+        CheckForCreatedRecipe();
+        CheckItemEqualZero();
+    }
+
+    private void SwitchState()
+    {
         if (open)
         {
             dropItemZone.SetActive(false);
@@ -156,9 +144,6 @@ public class CookingManager : MonoBehaviour
                     break;
             }
         }
-
-        CheckForCreatedRecipe();
-        CheckItemEqualZero();
     }
 
     private void CheckForCreatedRecipe()
