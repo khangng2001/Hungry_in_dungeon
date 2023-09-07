@@ -9,11 +9,11 @@ public class CloudDataHandler
 {
     MongoClient.Collection<GameData> collection;
 
-    public CloudDataHandler(MongoClient.Collection<GameData> collectional)
+    public CloudDataHandler(MongoClient.Collection<GameData> user)
     {
         try
         {
-            collection = collectional;
+            collection = user;
         }
         catch (AppException ex)
         {
@@ -25,11 +25,13 @@ public class CloudDataHandler
     {
         try
         {
+            Debug.Log("Tas<GameData> findPid: " + findPid);
             GameData myAccount = await collection.FindOneAsync(new { pid = findPid });
             return myAccount;
         }
         catch (AppException ex)
         {
+            Debug.Log("Tas<GameData> catch: " + findPid);
             Debug.LogException(ex);
             return null;
         }

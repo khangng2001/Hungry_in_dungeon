@@ -5,50 +5,99 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DataPersistence : MonoBehaviour
 {
     MongoClient.Collection<GameData> collection;
 
-    private GameData myAccount;
+    private string pid;
+
     private CloudDataHandler dataHandler;
     private List<IDataPersistence> dataPersistencesObjects;
 
-    private async void Awake()
-    {
-        User user = GameObject.FindObjectOfType<ConnectMongoDb>().GetComponent<ConnectMongoDb>().user;
-        var mongoDbClient = user.GetMongoClient("mongodb-atlas");
-        var database = mongoDbClient.GetDatabase("HungryInDungeon");
-        collection = database.GetCollection<GameData>("Player");
+    public static DataPersistence instance { get; private set; }
 
-        myAccount = await FindPlayerPid(user.Id);
-        Debug.Log("myAccount: " + myAccount.Pid);
+    //----------------------------------------------------------------------------------------------------------------------------
 
-        dataPersistencesObjects = FindAllDataPersistenceObjects();
-    }
-
-    private async Task<GameData> FindPlayerPid(string findPid)
+    private void Awake()
     {
         try
         {
-            GameData myAccount = await collection.FindOneAsync(new {pid = findPid});
-            return myAccount;
+            User user = GameObject.FindObjectOfType<ConnectMongoDb>().GetComponent<ConnectMongoDb>().user;
+            var mongoDbClient = user.GetMongoClient("mongodb-atlas");
+            var database = mongoDbClient.GetDatabase("HungryInDungeon");
+            collection = database.GetCollection<GameData>("Player");
+
+            FindPlayerPid(user.Id);
+            Debug.Log("pid: " + pid);
+            NewGame();
+            this.dataHandler = new CloudDataHandler(collection);
+
+            if (instance != null)
+            {
+                Debug.LogError("Found more than one Data Persistence Manager in the scene. Destroying the newest one.");
+                Destroy(this.gameObject);
+                return;
+            } 
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
         catch (AppException ex)
         {
             Debug.LogException(ex);
-            return null;
         }
     }
 
-    public void NewGame()
+    private void OnEnable()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnLoaded;
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded Called");
+        dataPersistencesObjects = FindAllDataPersistenceObjects();
+        LoadGame();
+    }
+
+    public void OnSceneUnLoaded(Scene scene)
+    {
+        Debug.Log("OnSceneUnLoaded Called");
+        SaveGame();
+    }
+
+    private async void FindPlayerPid(string findPid)
+    {
+        try
+        {
+            GameData myAccount = await collection.FindOneAsync(new {pid = findPid});
+            pid = myAccount.Pid;
+        }
+        catch (AppException ex)
+        {
+            Debug.LogException(ex);
+        }
+    }
+
+    public async void NewGame()
+    {
+        GameData myAccount = await collection.FindOneAsync(new { pid = pid });
         // Create new data for game
         myAccount = new GameData();
     }
 
     public async void LoadGame()
     {
+        GameData myAccount = await collection.FindOneAsync(new { pid = pid });
+
         // Load any saved data from a player in mongodb
         myAccount = await dataHandler.Load(myAccount.Pid);
         
@@ -59,8 +108,10 @@ public class DataPersistence : MonoBehaviour
         }
     }
 
-    public void SaveGame()
+    public async void SaveGame()
     {
+        GameData myAccount = await collection.FindOneAsync(new { pid = pid });
+
         // Pass the data other scripts so they can update it
         foreach (IDataPersistence dataPersistenceObj in dataPersistencesObjects)
         {
@@ -69,6 +120,17 @@ public class DataPersistence : MonoBehaviour
 
         // Save that data to a player in mongodb  
         dataHandler.Save(myAccount, myAccount.Pid);
+        Debug.Log("Save success");
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveGame();
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        SaveGame();
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()

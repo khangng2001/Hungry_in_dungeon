@@ -92,7 +92,7 @@ public class ConnectMongoDb : MonoBehaviour
             user = await app.LogInAsync(Credentials.EmailPassword(nameLoginField.text, passLoginField.text));
             SwitchStateSceneStatus(SceneStatus.Login);
             Debug.Log("User.Id: " + user.Id);
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
         catch (AppException ex)
         {
