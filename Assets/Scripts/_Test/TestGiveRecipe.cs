@@ -7,18 +7,17 @@ public class TestGiveRecipe : MonoBehaviour
 
     [SerializeField] private List<RecipeSO> recipePapers;
 
-    /*public RecipeSO RandomRecipeSO()
+    public void GiveRecipe()
     {
-        RecipeSO temp = new RecipeSO();
-        temp = recipePapers[0];
-        recipePapers.Remove(recipePapers[0]);
-        return temp;
+        if (RecipeManager.instance.listOfPaperUI.Count == 0 )
+        {
+            AddRecipe();
+        } else
+        {
+            //if (coinPaper >= 1)
+                AddRecipe();
+        }
     }
-
-    public RecipeSO GiveRecipeSO()
-    {
-        return RandomRecipeSO();
-    }*/
 
     public void AddRecipe()
     {
