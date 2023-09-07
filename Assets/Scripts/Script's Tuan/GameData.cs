@@ -45,6 +45,10 @@ public partial class GameData
     public int Level { get; set; }
     [BsonElement("damage")]
     public int Damage { get; set; }
+    [BsonElement("recipeListCount")]
+    public int RecipeListCount { get; set; }
+    [BsonElement("coinPaper")]
+    public int CoinPaper { get; set; }
     [BsonElement("inventory")]
     public List<Item> inventory { get; set; }
 }
