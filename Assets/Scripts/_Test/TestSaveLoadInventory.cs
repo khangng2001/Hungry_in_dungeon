@@ -52,7 +52,7 @@ public class TestSaveLoadInventory : MonoBehaviour, IDataPersistence
             {
                 data.inventory[i].Name = null;
                 data.inventory[i].Count = 0;
-                data.inventory[i].Slot = 0;
+                data.inventory[i].Slot = i;
             }
         }
 
