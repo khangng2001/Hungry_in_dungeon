@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Light
+  - Sword
+  - EnemyAttackRange
+  - Hole
+  - Trap
+  - Leg
   layers:
   - Default
   - TransparentFX
@@ -13,11 +18,11 @@ TagManager:
   - Water
   - UI
   - Light
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Wall
+  - Hole
+  - Enemy
+  - Player
   - 
   - 
   - 
