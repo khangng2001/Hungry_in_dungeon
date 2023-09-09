@@ -1,30 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeDetect : MonoBehaviour
+namespace Enemy
 {
-    [SerializeField] private bool isDetect;
-
-    public GameObject player;
-
-    private void Awake()
+    public class RangeDetect : MonoBehaviour
     {
-        isDetect = false;
-    }
+        [SerializeField] private bool isDetect;
 
-    public bool GetIsDetect()
-    {
-        return isDetect;
-    }
+        public GameObject player;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
+        private void Awake()
         {
-            player = collision.gameObject;
+            isDetect = false;
+        }
 
-            isDetect = true;
+        public bool GetIsDetect()
+        {
+            return isDetect;
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.tag == "Player")
+            {
+                player = collision.gameObject;
+
+                isDetect = true;
+            }
         }
     }
 }

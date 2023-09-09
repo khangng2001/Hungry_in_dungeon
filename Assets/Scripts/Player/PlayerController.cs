@@ -1,278 +1,280 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
-using UnityEngine;
+using Enemy;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour, IDataPersistence
+namespace Player
 {
-    // HEALTH PLAYER
-    private float maxHealth = 0f;
-    [SerializeField]  private float currentHealth = 0f;
-    [SerializeField] private GameObject healthBar;
-    [SerializeField] private TextMeshProUGUI textHealthBar;
+    public class PlayerController : MonoBehaviour, IDataPersistence
+    {
+        // HEALTH PLAYER
+        private float maxHealth = 0f;
+        [SerializeField]  private float currentHealth = 0f;
+        [SerializeField] private GameObject healthBar;
+        [SerializeField] private TextMeshProUGUI textHealthBar;
 
-    // STAMINA PLAYER
-    private float maxStamina = 0f;
-    private float currentStamina = 0f;
-    [SerializeField] private GameObject staminaBar;
-    [SerializeField] private TextMeshProUGUI textStaminaBar;
+        // STAMINA PLAYER
+        private float maxStamina = 0f;
+        private float currentStamina = 0f;
+        [SerializeField] private GameObject staminaBar;
+        [SerializeField] private TextMeshProUGUI textStaminaBar;
     
-    // STRENGTH PLAYER
-    [SerializeField] private float strength = 0f;
+        // STRENGTH PLAYER
+        [SerializeField] private float strength = 0f;
 
-    // BLOOD PARTICLE
-    [SerializeField] private GameObject bloodObject;
+        // BLOOD PARTICLE
+        [SerializeField] private GameObject bloodObject;
 
-    private float countTimeIncreaseStamina = 0f;
+        private float countTimeIncreaseStamina = 0f;
 
-    private Animator ani;
+        private Animator ani;
 
-    private PlayerInput input;
+        private PlayerInput input;
 
-    [SerializeField]private float moveSpeed = 5f;
-    private Vector3 moveDir = Vector3.zero;
+        [SerializeField]private float moveSpeed = 5f;
+        private Vector3 moveDir = Vector3.zero;
 
-    private void Awake()
-    {
-        ani = GetComponentInChildren<Animator>();
-        input = GetComponent<PlayerInput>();
+        private void Awake()
+        {
+            ani = GetComponentInChildren<Animator>();
+            input = GetComponent<PlayerInput>();
 
-        SetHealth(200);
-        SetStamina(20);
-        SetStrength(10);
-    }
+            SetHealth(200);
+            SetStamina(20);
+            SetStrength(10);
+        }
 
-    void Start()
-    {
+        void Start()
+        {
         
-    }
-
-    void Update()
-    {
-        Moving();
-
-        FlipXByMouse();
-
-        FlipYByMouse();
-
-        IncreaseStaminaByTime();
-    }
-
-    void FlipXByMouse()
-    {
-        Vector2 direction = input.inputMosue - new Vector2(transform.position.x, transform.position.y);
-
-        if (direction.x < 0)
-        {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
-        else if (direction.x > 0)
+
+        void Update()
         {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            Moving();
+
+            FlipXByMouse();
+
+            FlipYByMouse();
+
+            IncreaseStaminaByTime();
         }
-    }
 
-    void FlipYByMouse()
-    {
-        Vector2 direction = input.inputMosue - new Vector2(transform.position.x, transform.position.y);
-
-        if (direction.y < 0)
+        void FlipXByMouse()
         {
-            ani.Play("DownRight");
-        }
-        else if (direction.y > 0)
-        {
-            ani.Play("UpRight");
-        }
-    }
+            Vector2 direction = input.inputMosue - new Vector2(transform.position.x, transform.position.y);
 
-    private void Moving()
-    {
-        float horizontal = input.horizontal;
-        float vertical = input.vertical;
-
-        moveDir.Set(horizontal, vertical, 0f);
-        moveDir.Normalize();
-
-        transform.Translate( moveDir * (moveSpeed * Time.deltaTime));
-    }
-
-    public void BloodOut()
-    {
-        Instantiate(bloodObject, transform.position, Quaternion.identity);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("EnemyAttackRange"))
-        {
-            DecreaseHealth(collision.gameObject.GetComponentInParent<EnemyHandle>().GetStrength());
-            BloodOut();
-        }
-    }
-
-    // ================= HANDLE HEALTH ======================
-    public void SetHealth(float newHealth)
-    {
-        maxHealth = newHealth;
-        currentHealth = maxHealth;
-        healthBar.GetComponent<Slider>().maxValue = maxHealth;
-        LoadHealth();
-    }
-
-    public void LoadHealth()
-    {
-        textHealthBar.text = currentHealth + "/" + maxHealth;
-        healthBar.GetComponent<Slider>().value = currentHealth;
-    }
-
-    public void IncreaseHealth(float newHealth)
-    {
-        if (currentHealth <= maxHealth)
-        {
-            currentHealth += newHealth;
-
-            if (currentHealth > maxHealth)
+            if (direction.x < 0)
             {
-                currentHealth = maxHealth;
+                transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+            else if (direction.x > 0)
+            {
+                transform.localScale = new Vector3(1f, 1f, 1f);
             }
         }
 
-        LoadHealth();
-    }
-
-    public void DecreaseHealth(float lostHealth)
-    {
-        if (currentHealth > 0)
+        void FlipYByMouse()
         {
-            currentHealth -= lostHealth;
+            Vector2 direction = input.inputMosue - new Vector2(transform.position.x, transform.position.y);
 
-            if (currentHealth < 0)
+            if (direction.y < 0)
             {
-                currentHealth = 0;
+                ani.Play("DownRight");
+            }
+            else if (direction.y > 0)
+            {
+                ani.Play("UpRight");
             }
         }
 
-        LoadHealth();
-    }
-
-    public float GetHealth()
-    {
-        return currentHealth;
-    }
-
-    // ==========================================
-
-    // ======= HANDLE STAMINA ==============
-    public void SetStamina(float newStamina)
-    {
-        maxStamina = newStamina;
-        currentStamina = maxStamina;
-        staminaBar.GetComponent<Slider>().maxValue = maxStamina;
-        LoadStamina();
-    }
-
-    public void LoadStamina()
-    {
-        textStaminaBar.text = currentStamina + "/" + maxStamina;
-        staminaBar.GetComponent<Slider>().value = currentStamina;
-    }
-
-    public void IncreaseStamina(float newStamina)
-    {
-        if (currentStamina < maxStamina)
+        private void Moving()
         {
-            currentStamina += newStamina;
+            float horizontal = input.horizontal;
+            float vertical = input.vertical;
 
-            if (currentStamina > maxStamina)
+            moveDir.Set(horizontal, vertical, 0f);
+            moveDir.Normalize();
+
+            transform.Translate( moveDir * (moveSpeed * Time.deltaTime));
+        }
+
+        public void BloodOut()
+        {
+            Instantiate(bloodObject, transform.position, Quaternion.identity);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("EnemyAttackRange"))
             {
-                currentStamina = maxStamina;
+                DecreaseHealth(collision.gameObject.GetComponentInParent<EnemyHandle>().GetStrength());
+                BloodOut();
             }
         }
 
-        LoadStamina();
-    }
-
-    public void DecreaseStamina(float lostStamina)
-    {
-        if (currentStamina >= 0)
+        // ================= HANDLE HEALTH ======================
+        public void SetHealth(float newHealth)
         {
-            currentStamina -= lostStamina;
+            maxHealth = newHealth;
+            currentHealth = maxHealth;
+            healthBar.GetComponent<Slider>().maxValue = maxHealth;
+            LoadHealth();
+        }
 
-            if (currentStamina < 0)
+        public void LoadHealth()
+        {
+            textHealthBar.text = currentHealth + "/" + maxHealth;
+            healthBar.GetComponent<Slider>().value = currentHealth;
+        }
+
+        public void IncreaseHealth(float newHealth)
+        {
+            if (currentHealth <= maxHealth)
             {
-                currentStamina = 0;
+                currentHealth += newHealth;
+
+                if (currentHealth > maxHealth)
+                {
+                    currentHealth = maxHealth;
+                }
+            }
+
+            LoadHealth();
+        }
+
+        public void DecreaseHealth(float lostHealth)
+        {
+            if (currentHealth > 0)
+            {
+                currentHealth -= lostHealth;
+
+                if (currentHealth < 0)
+                {
+                    currentHealth = 0;
+                }
+            }
+
+            LoadHealth();
+        }
+
+        public float GetHealth()
+        {
+            return currentHealth;
+        }
+
+        // ==========================================
+
+        // ======= HANDLE STAMINA ==============
+        public void SetStamina(float newStamina)
+        {
+            maxStamina = newStamina;
+            currentStamina = maxStamina;
+            staminaBar.GetComponent<Slider>().maxValue = maxStamina;
+            LoadStamina();
+        }
+
+        public void LoadStamina()
+        {
+            textStaminaBar.text = currentStamina + "/" + maxStamina;
+            staminaBar.GetComponent<Slider>().value = currentStamina;
+        }
+
+        public void IncreaseStamina(float newStamina)
+        {
+            if (currentStamina < maxStamina)
+            {
+                currentStamina += newStamina;
+
+                if (currentStamina > maxStamina)
+                {
+                    currentStamina = maxStamina;
+                }
+            }
+
+            LoadStamina();
+        }
+
+        public void DecreaseStamina(float lostStamina)
+        {
+            if (currentStamina >= 0)
+            {
+                currentStamina -= lostStamina;
+
+                if (currentStamina < 0)
+                {
+                    currentStamina = 0;
+                }
+            }
+
+            LoadStamina();
+        }
+
+        public float GetStamina()
+        {
+            return currentStamina;
+        }
+
+        private void IncreaseStaminaByTime()
+        {
+            if (currentStamina < maxStamina)
+            {
+                countTimeIncreaseStamina += Time.deltaTime;
+
+                if (countTimeIncreaseStamina > 0.5f)
+                {
+                    IncreaseStamina(1);
+
+                    countTimeIncreaseStamina = 0;
+                }
+            }
+        }
+        // ===========================================
+
+        // ======= HANDLE STRENGTH ==============
+        public void SetStrength(float newStrength)
+        {
+            strength = newStrength;
+        }
+
+        public void IncreaseStength(float newStrength)
+        {
+            strength += newStrength;
+        }
+
+        public void DecreaseStength(float lostStrength)
+        {
+            if (strength >= 0)
+            {
+                strength -= lostStrength;
+
+                if (strength < 0)
+                {
+                    strength = 0;
+                }
             }
         }
 
-        LoadStamina();
-    }
-
-    public float GetStamina()
-    {
-        return currentStamina;
-    }
-
-    private void IncreaseStaminaByTime()
-    {
-        if (currentStamina < maxStamina)
+        public float GetStrength()
         {
-            countTimeIncreaseStamina += Time.deltaTime;
-
-            if (countTimeIncreaseStamina > 0.5f)
-            {
-                IncreaseStamina(1);
-
-                countTimeIncreaseStamina = 0;
-            }
+            return strength;
         }
-    }
-    // ===========================================
 
-    // ======= HANDLE STRENGTH ==============
-    public void SetStrength(float newStrength)
-    {
-        strength = newStrength;
-    }
-
-    public void IncreaseStength(float newStrength)
-    {
-        strength += newStrength;
-    }
-
-    public void DecreaseStength(float lostStrength)
-    {
-        if (strength >= 0)
+        // ===========================================
+        // ======= SAVE AND LOAD DATA ==============
+        public void LoadData(GameData data)
         {
-            strength -= lostStrength;
-
-            if (strength < 0)
-            {
-                strength = 0;
-            }
+            transform.position = new Vector3(data.Position.X, data.Position.Y, data.Position.Z);
         }
-    }
 
-    public float GetStrength()
-    {
-        return strength;
-    }
-
-    // ===========================================
-    // ======= SAVE AND LOAD DATA ==============
-    public void LoadData(GameData data)
-    {
-        transform.position = new Vector3(data.Position.X, data.Position.Y, data.Position.Z);
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.Position = new Position
+        public void SaveData(ref GameData data)
         {
-            X = transform.position.x,
-            Y = transform.position.y,
-            Z = transform.position.z
-        };
+            data.Position = new Position
+            {
+                X = transform.position.x,
+                Y = transform.position.y,
+                Z = transform.position.z
+            };
+        }
     }
 }

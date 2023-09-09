@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Inventory;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour

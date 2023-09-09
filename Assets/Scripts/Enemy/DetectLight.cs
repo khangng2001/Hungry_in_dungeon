@@ -1,39 +1,41 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectLight : MonoBehaviour
+namespace Enemy
 {
-    List<Collider2D> colliders = new List<Collider2D>();
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class DetectLight : MonoBehaviour
     {
-        if (collision.CompareTag("Light"))
+        List<Collider2D> colliders = new List<Collider2D>();
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            GetComponentInChildren<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
-
-            colliders.Add(collision);
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Light"))
-        {
-            GetComponentInChildren<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
-
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Light"))
-        {
-            colliders.Remove(collision);
-
-            if (colliders.Count == 0)
+            if (collision.CompareTag("Light"))
             {
-                GetComponentInChildren<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+                GetComponentInChildren<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
+
+                colliders.Add(collision);
+            }
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Light"))
+            {
+                GetComponentInChildren<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
+
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Light"))
+            {
+                colliders.Remove(collision);
+
+                if (colliders.Count == 0)
+                {
+                    GetComponentInChildren<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+                }
             }
         }
     }

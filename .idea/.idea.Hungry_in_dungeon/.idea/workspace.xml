@@ -5,44 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="caa4e4eb-c549-4ef1-bdc9-59b9aeb58108" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Fly_left.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Fly_left.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Hover_left.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Hover_left.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Landing.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Landing.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Launch_left.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Launch_left.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Melee_down.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Melee_down.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Melee_left.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Melee_left.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Melee_right.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Melee_right.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Melee_up.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/Melee_up.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Boss/NavMesh-Navmesh 1.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Boss/NavMesh-Navmesh 1.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Boss/DragonStates.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Boss/DragonStates.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Boss/DragonStats.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Boss/DragonStats.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Boss/HandleAttack.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Boss/HandleAttack.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Hungry_in_dungeon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Hungry_in_dungeon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/DragonSprite.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Enemies/Dragon/DragonSprite.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boss.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boss.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/GuardAI/TaskPatrol.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/GuardAI/TaskPatrol.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/DragonController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/DragonController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Enemies/Dragon/dragon_FIREBREATH_green.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Enemies/Dragon/dragon_FIREBREATH_green.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Enemies/Dragon/dragon_FLY_green.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Enemies/Dragon/dragon_FLY_green.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Enemies/Dragon/dragon_HOVER_green.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Enemies/Dragon/dragon_HOVER_green.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Enemies/Dragon/dragon_IDLE_green.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Enemies/Dragon/dragon_IDLE_green.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Enemies/Dragon/dragon_LAUNCH_green.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Enemies/Dragon/dragon_LAUNCH_green.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Enemies/Dragon/dragon_MELEE_green.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Enemies/Dragon/dragon_MELEE_green.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Enemies/Dragon/dragon_WALK_green.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Enemies/Dragon/dragon_WALK_green.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene_02.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene_02.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cooking/CookingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cooking/CookingManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cooking/CookingSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cooking/CookingSlot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/DetectLight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/DetectLight.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemyHandle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/LegEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/LegEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/RangeAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/RangeAttack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/RangeDetect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/RangeDetect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/RangeHurt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/RangeHurt.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/DropItemZone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/DropItemZone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventorySlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventorySlot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/LegController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/LegController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/LightPlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/LightPlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PanelClickAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PanelClickAttack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/RotateWithMouse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/RotateWithMouse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/SwordController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/SwordController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ShadowMap.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ShadowMap.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Test/TestSaveLoadInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Test/TestSaveLoadInventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Dungeon/dungeontileset-extended.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Dungeon/dungeontileset-extended.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Palette/Floor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tiles/Palette/Floor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Palette/Wall.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tiles/Palette/Wall.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,12 +49,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a53e7cd0bf8c4035ac3e78fb7b43c4a6818600/ab/2feabc28/Editor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fc327b7fe2814a8a95c1d82cb6a3071e15a000/7c/8a7f41a8/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/GuardAI/TaskPatrol.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/Sequence.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/Behavior Tree/Tree.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/Boss/DragonController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/Boss/HandleAttacking.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/ShadowMap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.12/Runtime/2D/Light2D.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -75,29 +68,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "ReSpellerSettingsId",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ReSpellerSettingsId&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\khang\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\khang\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\khang\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\khang\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\khang\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\khang\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="D:\Unity Editor\2021.3.27f1\Editor\Unity.exe" />
@@ -154,7 +147,9 @@
       <workItem from="1693552061797" duration="636000" />
       <workItem from="1693553571228" duration="29627000" />
       <workItem from="1693751561539" duration="2843000" />
-      <workItem from="1693812737552" duration="19311000" />
+      <workItem from="1693812737552" duration="20152000" />
+      <workItem from="1694228804825" duration="22000" />
+      <workItem from="1694229483676" duration="727000" />
     </task>
     <servers />
   </component>

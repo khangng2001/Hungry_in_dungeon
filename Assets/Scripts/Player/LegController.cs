@@ -1,51 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LegController : MonoBehaviour
+namespace Player
 {
-    public bool fall = false;
-    [SerializeField] private GameObject player;
-
-    private void Awake()
+    public class LegController : MonoBehaviour
     {
-        player = transform.parent.gameObject;   
-    }
+        public bool fall = false;
+        [SerializeField] private GameObject player;
 
-    private void Update()
-    {
-        if (fall)
+        private void Awake()
         {
-            player.GetComponent<PlayerInput>().enabled = false;
-            player.GetComponent<PlayerController>().enabled = false;
-
-
-            if (player.transform.localScale.x == 0f || player.transform.localScale.y <= 0f)
-            {
-
-            }
-            else if (player.transform.localScale.x < 0f)
-            {
-                player.transform.localScale -= new Vector3(-0.1f, 0.1f, 0f);
-            }
-            else
-            {
-                player.transform.localScale -= new Vector3(0.1f, 0.1f, 0f);
-            }
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Hole"))
-        {
-            fall = true;
+            player = transform.parent.gameObject;   
         }
 
-        if (collision.CompareTag("Trap"))
+        private void Update()
         {
-            player.GetComponent<PlayerController>().DecreaseHealth(10f);
-            player.GetComponent<PlayerController>().BloodOut();
+            if (fall)
+            {
+                player.GetComponent<PlayerInput>().enabled = false;
+                player.GetComponent<PlayerController>().enabled = false;
+
+
+                if (player.transform.localScale.x == 0f || player.transform.localScale.y <= 0f)
+                {
+
+                }
+                else if (player.transform.localScale.x < 0f)
+                {
+                    player.transform.localScale -= new Vector3(-0.1f, 0.1f, 0f);
+                }
+                else
+                {
+                    player.transform.localScale -= new Vector3(0.1f, 0.1f, 0f);
+                }
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Hole"))
+            {
+                fall = true;
+            }
+
+            if (collision.CompareTag("Trap"))
+            {
+                player.GetComponent<PlayerController>().DecreaseHealth(10f);
+                player.GetComponent<PlayerController>().BloodOut();
+            }
         }
     }
 }

@@ -1,46 +1,48 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeHurt : MonoBehaviour
+namespace Enemy
 {
-    [SerializeField] private bool isHurt;
-
-    private bool wait;
-
-    private void Awake()
+    public class RangeHurt : MonoBehaviour
     {
-        isHurt = false;
+        [SerializeField] private bool isHurt;
 
-        wait = false;
-    }
+        private bool wait;
 
-    private void Update()
-    {
-        if (isHurt && !wait)
+        private void Awake()
         {
-            StartCoroutine(Wait());
-            wait = true;
+            isHurt = false;
+
+            wait = false;
         }
-    }
 
-    public IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(0.5f);
-        isHurt = false;
-        wait = false;
-    }
-
-    public bool GetIsHurt()
-    {
-        return isHurt;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Sword")
+        private void Update()
         {
-            isHurt = true;
+            if (isHurt && !wait)
+            {
+                StartCoroutine(Wait());
+                wait = true;
+            }
+        }
+
+        public IEnumerator Wait()
+        {
+            yield return new WaitForSeconds(0.5f);
+            isHurt = false;
+            wait = false;
+        }
+
+        public bool GetIsHurt()
+        {
+            return isHurt;
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.tag == "Sword")
+            {
+                isHurt = true;
+            }
         }
     }
 }

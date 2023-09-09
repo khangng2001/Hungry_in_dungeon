@@ -1154,6 +1154,258 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: stair_no_matt_01
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 944
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 322bade4c8675f1428b1180145e14df4
+      internalID: 204890173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stair_no_matt_02
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 944
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f8707b0b4b69854e919960ad1c4f285
+      internalID: 2050975870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stair_no_matt_03
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 928
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac2e3e4390ee39b4385e7463e598ab19
+      internalID: 918842626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stair_no_matt_04
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 928
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3045c7b0f11583458b0eccbc7436ea8
+      internalID: -222117789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stair_no_matt_05
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 912
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11763917e05650b45bb0ac0f59e7c49e
+      internalID: 299154575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stair_no_matt_06
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 912
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c73a510a7f7938e4f9ed0894d599ec50
+      internalID: -1225920835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stair_no_matt_07
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 896
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19fd7627b3212b94582875a8d412c3fd
+      internalID: -1699931934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stair_no_matt_08
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 896
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8aca69724a9ee24cb293d8546d99733
+      internalID: 1942678553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tall_door_01
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 752
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff3d967e7dc068f45912645efb2d63a6
+      internalID: -817942798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tall_door_03
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 736
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2042344a55e24e428998dd28ba424ae
+      internalID: -616952061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tall_door_02
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 752
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 511141afb4e72f548853360593b68e6c
+      internalID: 366944747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tall_door_04
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 736
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfabf1386d61a5d4c8cc59d56709486a
+      internalID: -1562791181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1175,10 +1427,6 @@ TextureImporter:
       blue_fountain_bottom_03: 560105068
       dungeontileset-extended_0: 626737488
       dungeontileset-extended_1: 449188288
-      dungeontileset-extended_2: -204347541
-      dungeontileset-extended_3: -879395472
-      dungeontileset-extended_4: -1601068140
-      dungeontileset-extended_7: 1613536078
       grass: -151357896
       grass_floor_01: 871800659
       grass_floor_02: -1892661957
@@ -1205,6 +1453,14 @@ TextureImporter:
       matt_16: 405168214
       matt_17: -1998996223
       skull: 239816007
+      stair_no_matt_01: -204347541
+      stair_no_matt_02: 2050975870
+      stair_no_matt_03: -879395472
+      stair_no_matt_04: -1601068140
+      stair_no_matt_05: 299154575
+      stair_no_matt_06: -1225920835
+      stair_no_matt_07: 1613536078
+      stair_no_matt_08: 1942678553
       stairs_01: 442986988
       stairs_02: 1772034918
       stairs_03: 1592659410
@@ -1217,6 +1473,10 @@ TextureImporter:
       stairs_10: 1277522264
       stairs_11: 2020060068
       stairs_12: -1160418728
+      tall_door_01: -817942798
+      tall_door_02: 366944747
+      tall_door_03: -616952061
+      tall_door_04: -1562791181
       top_edge_01: -344301690
       top_edge_02: -1391279746
   spritePackingTag: 

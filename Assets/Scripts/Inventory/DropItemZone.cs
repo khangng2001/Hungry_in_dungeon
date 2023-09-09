@@ -1,14 +1,16 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DropItemZone : MonoBehaviour, IDropHandler
+namespace Inventory
 {
-    public void OnDrop(PointerEventData eventData)
+    public class DropItemZone : MonoBehaviour, IDropHandler
     {
-        InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();  //get the item
+        public void OnDrop(PointerEventData eventData)
+        {
+            InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();  //get the item
 
-        InventoryManager.instance.DropItemOnGround(inventoryItem);
-        InventoryManager.instance.DropItem(inventoryItem);
+            InventoryManager.instance.DropItemOnGround(inventoryItem);
+            InventoryManager.instance.DropItem(inventoryItem);
+        }
     }
 }
