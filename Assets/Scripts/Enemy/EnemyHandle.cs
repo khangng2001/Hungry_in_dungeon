@@ -97,5 +97,10 @@ public class EnemyHandle : MonoBehaviour
         return currentHealth;
     }
 
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     // ======================================================
 }

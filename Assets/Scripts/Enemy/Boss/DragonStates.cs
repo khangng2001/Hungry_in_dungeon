@@ -104,6 +104,7 @@ namespace Enemy.Boss
                 if (hit != null)
                 {
                     target = hit.transform;
+                    SetOrderLayer();
                     HandleDetection();
                 }
             }
@@ -138,6 +139,19 @@ namespace Enemy.Boss
                     transform.localScale = new Vector3(1f, 1f, 1f);
                 else if (moveDir.x > 1f)
                     transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+        }
+
+        private void SetOrderLayer()
+        {
+            Vector2 dir = target.position - transform.position;
+            if (dir.y > 0)
+            {
+                GetComponent<SpriteRenderer>().sortingOrder = 6;
+            }
+            else if (dir.y < 0)
+            {
+                GetComponent<SpriteRenderer>().sortingOrder = 4;
             }
         }
 

@@ -24,23 +24,26 @@ public class PlayerController : MonoBehaviour
     // BLOOD PARTICLE
     [SerializeField] private GameObject bloodObject;
 
+
     private float countTimeIncreaseStamina = 0f;
 
-    private Animator ani;
+    [SerializeField] private Animator animator;
 
     private PlayerInput input;
+    private PlayerController controller;
 
     [SerializeField]private float moveSpeed = 5f;
     private Vector3 moveDir = Vector3.zero;
 
     private void Awake()
     {
-        ani = GetComponentInChildren<Animator>();
+        animator = GetComponentInChildren<Animator>();
         input = GetComponent<PlayerInput>();
+        controller = GetComponent<PlayerController>();
 
         SetHealth(200);
         SetStamina(20);
-        SetStrength(10);
+        SetStrength(50);
     }
 
     void Start()
@@ -50,6 +53,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        LifeController();
+
         Moving();
 
         FlipXByMouse();
@@ -57,6 +62,16 @@ public class PlayerController : MonoBehaviour
         FlipYByMouse();
 
         IncreaseStaminaByTime();
+    }
+
+    void LifeController()
+    {
+        if (GetHealth() <= 0)
+        {
+            animator.Play("Die");
+            input.enabled = false;
+            controller.enabled = false;
+        }
     }
 
     void FlipXByMouse()
@@ -79,11 +94,11 @@ public class PlayerController : MonoBehaviour
 
         if (direction.y < 0)
         {
-            ani.Play("DownRight");
+            animator.Play("DownRight");
         }
         else if (direction.y > 0)
         {
-            ani.Play("UpRight");
+            animator.Play("UpRight");
         }
     }
 
