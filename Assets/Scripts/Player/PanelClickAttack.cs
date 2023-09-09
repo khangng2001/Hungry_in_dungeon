@@ -1,17 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Player
+public class PanelClickAttack : MonoBehaviour, IPointerClickHandler
 {
-    public class PanelClickAttack : MonoBehaviour, IPointerClickHandler
+    public bool attack = false;
+
+    public SwordController swordController;
+
+    public void OnPointerClick(PointerEventData eventData)
     {
-        public bool attack = false;
-
-        public SwordController swordController;
-
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            swordController.CLICK = true;
-        }
+        swordController.CLICK = true;
     }
 }

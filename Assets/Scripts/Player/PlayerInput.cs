@@ -1,21 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Player
+public class PlayerInput : MonoBehaviour
 {
-    public class PlayerInput : MonoBehaviour
+    public float horizontal;
+    public float vertical;
+
+    public Vector2 inputMosue;
+
+    void Update()
     {
-        public float horizontal;
-        public float vertical;
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
-        public Vector2 inputMosue;
-
-        void Update()
-        {
-            horizontal = Input.GetAxisRaw("Horizontal");
-            vertical = Input.GetAxisRaw("Vertical");
-
-            if (Camera.main != null) 
-                inputMosue = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
+        inputMosue = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 }

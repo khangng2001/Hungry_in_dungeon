@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Inventory;
 using UnityEngine;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -24,6 +24,19 @@ public class InventoryManager : MonoBehaviour
 
         GameManager.instance.LoadDataInventory();
     }
+
+    /*void MakeSingleton()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }*/
 
     private void Update()
     {
@@ -101,7 +114,6 @@ public class InventoryManager : MonoBehaviour
                 ItemSO item = itemInSlot.item;
                 if (use == true)
                 {
-                    //HAm add(item.health, item.stamina)
                     itemInSlot.count--;
                     if (itemInSlot.count <= 0)
                     {
@@ -166,7 +178,6 @@ public class InventoryManager : MonoBehaviour
         inventoryItem.InitialiseItem(item);
     }
 
-    //Remove all Item when Player Die
 
     //Save 
     public ItemSO SaveDataItem(int i)
@@ -192,6 +203,7 @@ public class InventoryManager : MonoBehaviour
         else {
             return 0;
         }
+        
     }
     //Load
     public void LoadData(int i, ItemSO item, int count)

@@ -1,40 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Enemy
+public class LegEnemy : MonoBehaviour
 {
-    public class LegEnemy : MonoBehaviour
+    public bool fall = false;
+    [SerializeField] private GameObject enemy;
+
+    private void Update()
     {
-        public bool fall = false;
-        [SerializeField] private GameObject enemy;
-
-        private void Update()
+        if (fall)
         {
-            if (fall)
+            enemy.GetComponent<EnemyController>().enabled = false;
+
+
+            if (enemy.transform.localScale.x == 0f || enemy.transform.localScale.y <= 0f)
             {
-                enemy.GetComponent<EnemyController>().enabled = false;
-
-
-                if (enemy.transform.localScale.x == 0f || enemy.transform.localScale.y <= 0f)
-                {
-                    Destroy(gameObject);
-                }
-                else if (enemy.transform.localScale.x < 0f)
-                {
-                    enemy.transform.localScale -= new Vector3(-0.1f, 0.1f, 0f);
-                }
-                else
-                {
-                    enemy.transform.localScale -= new Vector3(0.1f, 0.1f, 0f);
-                }
+                Destroy(gameObject);
+            }
+            else if (enemy.transform.localScale.x < 0f)
+            {
+                enemy.transform.localScale -= new Vector3(-0.1f, 0.1f, 0f);
+            }
+            else
+            {
+                enemy.transform.localScale -= new Vector3(0.1f, 0.1f, 0f);
             }
         }
+    }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Hole"))
         {
-            if (collision.CompareTag("Hole"))
-            {
-                fall = true;
-            }
+            fall = true;
         }
     }
 }

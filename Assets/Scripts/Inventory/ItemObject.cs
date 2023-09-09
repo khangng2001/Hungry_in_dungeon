@@ -1,51 +1,48 @@
 using UnityEngine;
 
-namespace Inventory
+public class ItemObject : MonoBehaviour
 {
-    public class ItemObject : MonoBehaviour
+    [SerializeField] private ItemSO item;
+    [SerializeField] private GameObject ui;
+
+    private bool check;
+
+    private void Awake()
     {
-        [SerializeField] private ItemSO item;
-        [SerializeField] private GameObject ui;
+        ui.SetActive(false);
+    }
 
-        private bool check;
+    public ItemSO GetItem() 
+    { 
+        return item; 
+    }
 
-        private void Awake()
+    public ItemObject GetItemObject()
+    {
+        return this;
+    }
+
+    private void Update()
+    {
+        if (check)
         {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                InventoryManager.instance.AddItem(item);
+                Destroy(this.gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            ui.SetActive(true);
+            check = true;
+        } else {
             ui.SetActive(false);
-        }
-
-        public ItemSO GetItem() 
-        { 
-            return item; 
-        }
-
-        public ItemObject GetItemObject()
-        {
-            return this;
-        }
-
-        private void Update()
-        {
-            if (check)
-            {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    InventoryManager.instance.AddItem(item);
-                    Destroy(this.gameObject);
-                }
-            }
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Player"))
-            {
-                ui.SetActive(true);
-                check = true;
-            } else {
-                ui.SetActive(false);
-                check = false;
-            }
+            check = false;
         }
     }
 }
