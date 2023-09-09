@@ -8,6 +8,7 @@ namespace Player
     public class PlayerController : MonoBehaviour, IDataPersistence
     {
         // HEALTH PLAYER
+        public static PlayerController Instance;
         private float maxHealth = 0f;
         [SerializeField]  private float currentHealth = 0f;
         [SerializeField] private GameObject healthBar;
@@ -39,14 +40,22 @@ namespace Player
             ani = GetComponentInChildren<Animator>();
             input = GetComponent<PlayerInput>();
 
-            SetHealth(200);
-            SetStamina(20);
-            SetStrength(10);
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
         }
 
         void Start()
         {
-        
+            SetHealth(200);
+            SetStamina(20);
+            SetStrength(10);
         }
 
         void Update()

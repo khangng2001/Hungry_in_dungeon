@@ -14,7 +14,8 @@ namespace Player
             horizontal = Input.GetAxisRaw("Horizontal");
             vertical = Input.GetAxisRaw("Vertical");
 
-            inputMosue = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (Camera.main != null) 
+                inputMosue = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }
 }
