@@ -4,6 +4,7 @@ using UnityEditor.Build;
 using System.Text;
 using Ink.UnityIntegration;
 using System.Linq;
+using Ink.Editor.Core.Ink_Settings;
 #if UNITY_2018_1_OR_NEWER
 using UnityEditor.Build.Reporting;
 #endif

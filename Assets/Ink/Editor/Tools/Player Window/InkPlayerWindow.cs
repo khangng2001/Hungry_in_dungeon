@@ -1,15 +1,19 @@
-﻿using UnityEngine;
-using UnityEditorInternal;
-using UnityEditor;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Linq;
+using System.Text;
 using Ink.Runtime;
+using Ink.UnityIntegration;
 using Ink.UnityIntegration.Debugging;
+using UnityEditor;
+using UnityEditorInternal;
+using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
-namespace Ink.UnityIntegration {
+namespace Ink.Editor.Tools.Player_Window {
 
 	/// <summary>
 	/// Ink player window. Tests stories in an editor window.
@@ -54,7 +58,7 @@ namespace Ink.UnityIntegration {
 		}
 
 		public static InkPlayerWindow GetWindow (bool focus) {
-			Type windowType = typeof(Editor).Assembly.GetType("UnityEditor.InspectorWindow");
+			Type windowType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.InspectorWindow");
 			return GetWindow<InkPlayerWindow>(windowTitle, focus, windowType);
 		}
 		

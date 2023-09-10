@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Ink.Editor.Core.Ink_Settings;
 using Debug = UnityEngine.Debug;
 
 /// <summary>

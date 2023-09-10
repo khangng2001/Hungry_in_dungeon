@@ -5,6 +5,7 @@ using System.IO;
 using Debug = UnityEngine.Debug;
 using System.Collections.Generic;
 using System.Linq;
+using Ink.Editor.Core.Ink_Settings;
 
 namespace Ink.UnityIntegration {
 	

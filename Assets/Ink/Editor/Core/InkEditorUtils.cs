@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Linq;
+using Ink.Editor.Core.Ink_Settings;
 using Ink.Runtime;
 using UnityEditor.ProjectWindowCallback;
 using UnityEditor.Callbacks;

@@ -4,6 +4,9 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using Ink.Editor.Core.Ink_Settings;
+using Ink.Editor.Tools.Ink_Inspector;
+using Ink.Editor.Tools.Player_Window;
 using UnityEditorInternal;
 using Object = UnityEngine.Object;
 

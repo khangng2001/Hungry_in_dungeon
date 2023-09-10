@@ -1,11 +1,16 @@
-﻿using UnityEngine;
+﻿using Ink.Editor.Tools.Startup_Window;
+using Ink.UnityIntegration;
+#if UNITY_EDITOR
 using UnityEditor;
-using System.Collections.Generic;
+#endif
+using UnityEngine;
+#if UNITY_EDITOR
+#endif
 
-namespace Ink.UnityIntegration {
+namespace Ink.Editor.Core.Ink_Settings {
 
 	[CustomEditor(typeof(InkSettings))]
-	public class InkSettingsEditor : Editor {
+	public class InkSettingsEditor : UnityEditor.Editor {
 
 		#pragma warning disable
 		protected InkSettings data;
