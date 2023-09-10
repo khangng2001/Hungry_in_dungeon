@@ -63,9 +63,10 @@ namespace Ink.Editor.Core.Ink_Settings {
 		// #endif
 
         public class AssetSaver : UnityEditor.AssetModificationProcessor {
-            static string[] OnWillSaveAssets(string[] paths) {
-                InkSettings.instance.Save(true);
-                return paths;
+            static string[] OnWillSaveAssets(string[] paths)
+            {
+	            if (instance != null) instance.Save(true);
+	            return paths;
             }
         }
 

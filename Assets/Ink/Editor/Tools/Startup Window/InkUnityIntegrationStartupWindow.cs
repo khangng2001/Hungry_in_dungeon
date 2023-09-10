@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Text.RegularExpressions;
-using Ink.Editor.Core.Ink_Settings;
 using Ink.UnityIntegration;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
+using static Ink.Editor.Core.Ink_Settings.InkSettings;
 
 namespace Ink.Editor.Tools.Startup_Window {
 	[InitializeOnLoad]
@@ -21,7 +23,7 @@ namespace Ink.Editor.Tools.Startup_Window {
 		}
 
 		static void TryCreateWindow() {
-			if (InkSettings.instance.suppressStartupWindow) return;
+			if (instance != null && instance.suppressStartupWindow) return;
 			announcementVersionPreviouslySeen = EditorPrefs.GetInt(editorPrefsKeyForVersionSeen, -1);
 			if(announcementVersion != announcementVersionPreviouslySeen) {
 				ShowWindow();
@@ -30,9 +32,14 @@ namespace Ink.Editor.Tools.Startup_Window {
 		
         public static void ShowWindow () {
             InkUnityIntegrationStartupWindow window = GetWindow(typeof(InkUnityIntegrationStartupWindow), true, "Ink Update "+InkLibrary.unityIntegrationVersionCurrent, true) as InkUnityIntegrationStartupWindow;
-            window.minSize = new Vector2(200, 200);
-            var size = new Vector2(520, 320);
-            window.position = new Rect((Screen.currentResolution.width-size.x) * 0.5f, (Screen.currentResolution.height-size.y) * 0.5f, size.x, size.y);
+            if (window != null)
+            {
+	            window.minSize = new Vector2(200, 200);
+	            var size = new Vector2(520, 320);
+	            window.position = new Rect((Screen.currentResolution.width - size.x) * 0.5f,
+		            (Screen.currentResolution.height - size.y) * 0.5f, size.x, size.y);
+            }
+
             EditorPrefs.SetInt(editorPrefsKeyForVersionSeen, announcementVersion);
         }
 

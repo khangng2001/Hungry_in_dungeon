@@ -3974,6 +3974,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/96c53c88d0be45b888a0eca388fddf767400/71/0ee4982a/Input.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Ink/Demos/Basic Demo/Scripts/Editor/BasicInkExampleEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enemy/ItemDrop.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -4009,6 +4010,14 @@
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../../Personal/Build\Hungry in dungeon.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\Personal\Build" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="D:\Personal Folders\2021.3.27f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;D:\FPT Game\FinalTerm\Hungry in dungeon&quot; -debugCodeOptimization" />
@@ -4059,6 +4068,7 @@
       <workItem from="1693914558992" duration="7192000" />
       <workItem from="1694256684402" duration="5325000" />
       <workItem from="1694265724273" duration="1077000" />
+      <workItem from="1694318639871" duration="10884000" />
     </task>
     <servers />
   </component>

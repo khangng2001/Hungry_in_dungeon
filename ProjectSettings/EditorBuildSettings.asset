@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Tuan's UI/Login.unity
     guid: 726f78b64438d704fa5180e08ecbb825
   - enabled: 0
-    path: Assets/Scenes/Tuan's UI/MainMenu 1.unity
+    path: Assets/Scenes/UI's Tuan/MainMenu.unity
     guid: 9f4a8f5a979eb574d984592a07e65329
   - enabled: 0
     path: Assets/Scenes/Crafting.unity
