@@ -1,3 +1,4 @@
+using Inventory;
 using UnityEngine;
 
 public class ItemObject : MonoBehaviour
