@@ -1,4 +1,3 @@
-using Inventory;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

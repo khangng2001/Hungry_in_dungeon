@@ -1,15 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Inventory;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    [SerializeField] private Canvas hudMenu;
 
     [Header("Inventory")]
     public List<ItemSO> item;   //item.length = inventorySlot.length = 7
@@ -17,6 +12,11 @@ public class GameManager : MonoBehaviour
 
 
     private void Awake()
+    {
+        MakeSingleton();
+    }
+
+    void MakeSingleton()
     {
         if (instance != null)
         {
@@ -27,12 +27,6 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        hudMenu = gameObject.GetComponentInChildren<Canvas>();
-        
     }
 
     public void SaveDataInventory()
@@ -54,7 +48,4 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-   
-    
 }
