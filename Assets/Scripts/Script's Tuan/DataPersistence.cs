@@ -13,6 +13,8 @@ public class DataPersistence : MonoBehaviour
 
     private string pid;
 
+    [SerializeField] private GameObject loadingUI;
+
     private CloudDataHandler dataHandler;
     private List<IDataPersistence> dataPersistencesObjects;
 
@@ -20,22 +22,10 @@ public class DataPersistence : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------------------------------
 
-    private async void Awake()
+    private void Awake()
     {
         try
         {
-            //User user = GameObject.FindObjectOfType<ConnectMongoDb>().GetComponent<ConnectMongoDb>().user;
-            //var mongoDbClient = user.GetMongoClient("mongodb-atlas");
-            //var database = mongoDbClient.GetDatabase("HungryInDungeon");
-            //collection = database.GetCollection<GameData>("Player");
-
-            //pid = await FindPlayerPid(user.Id);
-            //Debug.Log("pid: " + pid);
-            //this.dataHandler = new CloudDataHandler(collection);
-
-            //dataPersistencesObjects = FindAllDataPersistenceObjects();
-            //LoadGame();
-
             if (instance != null)
             {
                 Debug.LogError("Found more than one Data Persistence Manager in the scene. Destroying the newest one.");
@@ -109,12 +99,13 @@ public class DataPersistence : MonoBehaviour
 
     public async void LoadGame()
     {
+        loadingUI.SetActive(true);
         GameData myAccount = await collection.FindOneAsync(new { pid = pid });
 
         // Load any saved data from a player in mongodb
         Debug.Log("pid error: " + myAccount.Pid);
         myAccount = await dataHandler.Load(myAccount.Pid);
-        
+
         // Push the load data to all other script that need it
         foreach (IDataPersistence dataPersistenceObj in dataPersistencesObjects)
         {
