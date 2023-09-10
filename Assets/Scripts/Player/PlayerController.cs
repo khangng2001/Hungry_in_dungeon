@@ -7,13 +7,13 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     // HEALTH PLAYER
-    private float maxHealth = 0f;
+    [SerializeField] private float maxHealth = 0f;
     private float currentHealth = 0f;
     [SerializeField] private GameObject healthBar;
     [SerializeField] private TextMeshProUGUI textHealthBar;
 
     // STAMINA PLAYER
-    private float maxStamina = 0f;
+    [SerializeField] private float maxStamina = 0f;
     private float currentStamina = 0f;
     [SerializeField] private GameObject staminaBar;
     [SerializeField] private TextMeshProUGUI textStaminaBar;
@@ -41,9 +41,9 @@ public class PlayerController : MonoBehaviour
         input = GetComponent<PlayerInput>();
         controller = GetComponent<PlayerController>();
 
-        SetHealth(200);
-        SetStamina(20);
-        SetStrength(50);
+        SetHealth(maxHealth);
+        SetStamina(maxStamina);
+        SetStrength(strength);
     }
 
     void Start()
@@ -272,6 +272,13 @@ public class PlayerController : MonoBehaviour
     public float GetStrength()
     {
         return strength;
+    }
+    // ===========================================
+
+    // ======= HANDLE SPEED ==============
+    public float GetSpeed()
+    {
+        return moveSpeed;
     }
     // ===========================================
 }
