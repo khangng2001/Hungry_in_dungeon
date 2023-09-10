@@ -8,6 +8,8 @@ public class DialogueTrigger : MonoBehaviour
 
     [SerializeField] private TextAsset wizzardInk;
 
+    [SerializeField] private ItemSO item;
+
     private bool playerInRange;
 
     private void Awake()
@@ -23,7 +25,7 @@ public class DialogueTrigger : MonoBehaviour
             cue.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
             {
-                DialogueManager.instance.EnterDialogueMode(wizzardInk);
+                DialogueManager.instance.EnterDialogueMode(wizzardInk, item);
             }
         } 
         else

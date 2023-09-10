@@ -12,6 +12,8 @@ public class DialogueManager : MonoBehaviour
     private Story currentStory;
     private bool isDialoguePlaying;
 
+    private ItemSO item;
+
     public static DialogueManager instance { get; private set; }
     private void Awake()
     {
@@ -37,12 +39,13 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EnterDialogueMode(TextAsset inkJSON)
+    public void EnterDialogueMode(TextAsset inkJSON, ItemSO itemNPC)
     {
         currentStory = new Story(inkJSON.text);
         isDialoguePlaying = true;
         dialoguePanel.SetActive(true);
-        
+
+        item = itemNPC;
         ContinueStory();
     }
 
@@ -53,6 +56,14 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
     }
 
+    private void GiveItem()
+    {
+        if (item != null)
+        {
+            InventoryManager.instance.AddItem(item);
+        }
+    }
+
     private void ContinueStory()
     {
         if (currentStory.canContinue)
@@ -61,6 +72,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            GiveItem();
             ExitDialogueMode();
         }
     }
